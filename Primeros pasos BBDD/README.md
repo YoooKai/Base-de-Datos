@@ -1,30 +1,7 @@
-<!--
-
-<img src="img/Untitled 1.png">
-
-<img src="img/Untitled 2.png">
-
-<img src="img/Untitled 3.png">
-
-<img src="img/Untitled 4.png">
-
-<img src="img/Untitled 5.png">
-
-<img src="img/Untitled 6.png">
-
-<img src="img/Untitled 7.png">
-
-<img src="img/Untitled 8.png">
-
-<img src="img/Untitled 9.png">
-
-<img src="img/Untitled 10.png">
-
--->
 
 # Primeros pasos en SQL
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Vincent_van_Gogh_-_First_Steps%2C_after_Millet.jpg" height="400px">
+<img src="img/firststeps.jpg">
 
 ## Paso 1. Crear una tabla con un campo de cada tipo.
 
