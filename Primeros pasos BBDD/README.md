@@ -24,7 +24,7 @@
 
 # Primeros pasos en SQL
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Vincent_van_Gogh_-_First_Steps%2C_after_Millet.jpg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Vincent_van_Gogh_-_First_Steps%2C_after_Millet.jpg" height="400px">
 
 ## Paso 1. Crear una tabla con un campo de cada tipo.
 
