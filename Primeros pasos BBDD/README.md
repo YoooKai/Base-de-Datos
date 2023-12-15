@@ -1,7 +1,7 @@
 
 # Primeros pasos en SQL
 
-<img src="img/firststeps.jpg">
+<img src="img/firststeps.jpg" height="500px">
 
 ## Paso 1. Crear una tabla con un campo de cada tipo.
 
