@@ -1,3 +1,4 @@
+```markdown
 sqlite> select distinct(salario) from empleados order by salario asc;
 +---------+
 | salario |
@@ -51,5 +52,5 @@ sqlite> select * from empleados where departamento like '%Ventas%' and (nombre l
 | 12 | Sofía   | 49000.0 | Ventas       |
 | 18 | Natalia | 54000.0 | Ventas       |
 +----+---------+---------+--------------+
-
+```
 
