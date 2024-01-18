@@ -1,5 +1,5 @@
 # Tarea 3 - Trabajo con funciones en BBDD
-
+<img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/working-on-flanders-fields-h-b-gert-j-rheeders.jpg" height="300px">
 ## Paso 1: Creación de la BBDD
 Creación con el siguente contenido el fichero empleados-dump.sql
 ```sql
