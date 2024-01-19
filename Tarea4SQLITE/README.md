@@ -62,6 +62,12 @@ INSERT INTO ventas (id_producto, cantidad, fecha) VALUES
 ```code
 ```
 
+# Paso 2 - 
+
+<img src="er.drawio.png">
+
+<img src="entirelaci.drawio.png">
+
 # Paso 3 - Consultas.
 
 1. Mostrar todos los productos de la categoría "Bebidas".
