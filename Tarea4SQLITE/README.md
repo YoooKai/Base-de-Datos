@@ -62,11 +62,26 @@ INSERT INTO ventas (id_producto, cantidad, fecha) VALUES
 ```code
 ```
 
-# Paso 2 - 
+# Paso 2 
+
+### Realiza el diagrama ER de la BBDD supermercado.
 
 <img src="er.drawio.png">
 
+### Realiza el diagrama MR de la BBDD supermercado.
+
 <img src="entirelaci.drawio.png">
+
+### Indica si la BBDD esta normalizada hasta la 3ª forma normal, justificando la respuesta.
+
+Cumple con la 1 Forma Normal, ya que cumple con los siguientes criterios:
+
+Valores Atómicos: Cada celda de la tabla debe contener un solo valor, evitando la presencia de datos múltiples o compuestos. Esto garantiza que cada dato sea elemental y no esté mezclado con otros.
+
+Identificador Único: Cada fila en la tabla debe tener un identificador único, conocido como clave primaria. Esta clave primaria permite diferenciar de manera única entre los distintos registros de la tabla, asegurando la singularidad y la identificación clara de cada uno.
+
+También cumple con la 2 Forma Normal, ya que no contiene dependencias parciales.
+Y además cumple con la 3 Forma Normal pues no existe ninguna dependencia transitiva entre los atributos que no son clave
 
 # Paso 3 - Consultas.
 
