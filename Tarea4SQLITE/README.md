@@ -53,6 +53,19 @@ INSERT INTO ventas (id_producto, cantidad, fecha) VALUES
     (16, 3, '2024-01-19'),
     (18, 6, '2024-01-20');
 ```
+### Para crear la base de datos. primero se debe:
+
+```sql
+sqlite3 tarea4.db
+```
+```sql
+nano supermercado-db.sql
+```
+
+```sql
+.read supermercado-db.sql
+```
+
 ## Introducida la información, genera las siguientes tablas:
 
 ### Productos
