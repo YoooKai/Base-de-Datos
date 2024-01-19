@@ -3,7 +3,7 @@
 
 Con el siguente contenido creo el fickero supermercado-dump.sql.
 
-```
+```sql
 CREATE TABLE productos (
     id INTEGER PRIMARY KEY,
     nombre TEXT,
