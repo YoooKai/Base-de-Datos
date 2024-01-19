@@ -1,6 +1,6 @@
 
 # TAREA 4 - Funciones en BBDD
-<img src="https://arthive.net/res/media/img/oy800/work/216/372644@2x.jpg" height="400px">
+<img src="https://arthive.net/res/media/img/oy800/work/216/372644@2x.jpg" height="350px">
 Con el siguente contenido creo el fickero supermercado-dump.sql.
 
 ```sql
