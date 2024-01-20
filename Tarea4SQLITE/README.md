@@ -459,7 +459,7 @@ SELECT p.id, p.nombre, v.cantidad as ventas FROM productos as p, ventas as v WHE
 17. Encontrar los productos con un precio entre 3 y 4.
 
 ```
-select _ from productos where precio between 3 and 4;
+SELECT * FROM productos where precio between 3 and 4;
 ```
 
 ```code
@@ -589,7 +589,7 @@ SELECT * from productos where precio = (select avg(precio) from productos);
 23. Calcular el precio total de los productos vendidos en cada fecha.
 
 ```sql
-SELECT sum(p.precio *v.cantidad) as precio_total, v.fecha FROM productos as p, ventas as v WHERE p.id = v.id_producto GROUP BY v.fecha;
+SELECT sum(p.precio*v.cantidad) as precio_total, v.fecha FROM productos as p, ventas as v WHERE p.id = v.id_producto GROUP BY v.fecha;
 ```
 ```code
 +--------------+------------+
@@ -646,6 +646,7 @@ SELECT * FROM productos WHERE categoria LIKE "L%";
 28. Calcular el total de ventas para cada producto en la fecha '2024-01-17'.
 ```sql
 select p.id, p.nombre, p.precio *v.cantidad as ventas_totales, v.fecha from productos as p, ventas as v where p.id = v.id_producto and fecha like "2024-01-17";
+```
 ```
 +----+----------+----------------+------------+
 | id |  nombre  | ventas_totales |   fecha    |
