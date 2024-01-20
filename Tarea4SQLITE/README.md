@@ -708,4 +708,3 @@ SELECT * FROM productos where precio > (select avg(precio) from productos);
 
 ````
 
-````
