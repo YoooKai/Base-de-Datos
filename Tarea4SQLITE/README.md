@@ -292,7 +292,7 @@ SELECT * FROM productos where id not in (SELECT p.id from productos as p, ventas
 | 20 | Cerveza            | Bebidas   | 3.8    |
 +----+--------------------+-----------+--------+
 
-
+```
 8. Calcular el precio promedio de los productos en la categoría "Snacks".
 
 ```sql
@@ -303,7 +303,7 @@ SELECT categoria, AVG(precio) from productos where categoria like 'Snacks';
    +-----------+-------------+
    | categoria | AVG(precio) |
    +-----------+-------------+
-   | Snacks | 1.7            |
+   | Snacks    | 1.7         |
    +-----------+-------------+
 ```
 
@@ -389,7 +389,7 @@ SELECT fecha,SUM(cantidad) FROM ventas group by fecha;
 13. Listar los productos cuyo nombre comienza con la letra 'P'.
 
 ```sql
-SELECT \* FROM productos WHERE nombre LIKE 'P%';
+SELECT * FROM productos WHERE nombre LIKE 'P%';
 ```
 
 ```code
