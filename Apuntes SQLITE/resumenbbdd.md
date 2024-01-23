@@ -1,6 +1,6 @@
 # SQLITE
 
-- `CREATE`: Crea la tabla
+
 - `ALTER`: Añade o elimina objetos de la tabla
 
 ```sql
@@ -20,8 +20,7 @@ DROP TABLE if exists Coments;
 ```
 
 - `TRUNCATE`: Elimina TODOS los datos de la tabla
-- `SELECT`: Selecciona los datos que quieras de la tablas (indicar datos a seleccionar)
-- `INSERT`: Ayuda a colocar datos en la tabla (indicar datos a colocar)
+
 
 ## Para crear una base de datos:
 
@@ -31,15 +30,17 @@ sqlite3 comment_section.db
 
 ## Tipos de datos:
 
-Text
+- Text
 
-Integer (si es boleano 0(falso) o 1(true))
+- Integer (si es boleano 0(falso) o 1(true))
 
-Real
+- Real  son números con decimales
 
-Blob
+- Blob
 
-- Se usa **NULL / NOT NULL** para indicar si valor es necesario que esté relleno o null si no hay info, por ej:
+<br>
+
+#### Se usa **NULL / NOT NULL** para indicar si valor es necesario que esté relleno o null si no hay info, por ej:
 
 No hay información sobre precio el libro
 
@@ -244,4 +245,236 @@ select * from libro
 select * from libro
   where (autor='Borges' or editorial='Paidos') and
         (precio<20);
+```
+- `between` trabajar con intervalos de valores
+
+```sql
+select * from libro
+  where precio between 20 and 40;
+```
+
+```sql
+select * from libro
+  where precio not between 20 and 35;
+```
+- `in` averiguar si un valor está incluído o no en la lista de valores
+
+```sql
+ select * from libro
+  where autor in('Borges','Paenza');
+```
+
+```sql
+ select * from libro
+  where autor not in ('Borges','Paenza');
+```
+
+- `like` en lugar de usar =, se puede usar like para ser más específicos y buscar por letras concretas
+
+```sql
+ select * from libro
+  where autor like '%Borges%';
+```
+Que empiecen por m:
+```sql
+ select * from libro
+  where titulo like 'M%';
+```
+Que acaben por m:
+```sql
+ select * from libro
+  where titulo like '%m';
+```
+Que no contengan m:
+```sql
+ select * from libro
+  where titulo not like '%m%';
+```
+
+- `count` calcula la cantidad de cualquier tipo de dato
+
+```sql
+ select count(*)
+  from libro
+  where editorial='Planeta';
+```
+
+```sql
+ select count(precio)
+  from libro;
+```
+
+- `sum` sumar elementos
+```sql
+ select sum(cantidad)
+  from libro;
+```
+- `avg` calcular la media
+```sql
+ select avg(precio)
+  from libro
+  where titulo like '%PHP%';
+```
+- `min` calcular el valor mínimo
+```sql
+ select min(precio)
+  from libro;
+```
+
+- `max`calcular el valor máximo
+```sql
+ select max(precio)
+  from libro;
+```
+- `group by` agrupa registros para consultas detalladas.Por ej ver la cantidad de libros de cada editorial:
+
+```sql
+ select editorial, count(*)
+  from libro
+  group by editorial;
+```
+Total del dinero por editorial:
+```sql
+ select editorial, sum(precio)
+  from libro
+  group by editorial;
+```
+Saber el valor mín y máx de la editorial:
+```sql
+ select editorial,
+  max(precio) as mayor,
+  min(precio) as menor
+  from libro
+  group by editorial;
+```
+La media por editorial:
+```sql
+ select editorial, avg(precio)
+  from libro
+  group by editorial;
+```
+- `having ?` permite seleccionar (o rechazar) un grupo de registros.
+
+```sql
+  select editorial, count(*) from libro
+  group by editorial
+  having count(*)>2;
+```
+
+```sql
+ select editorial, avg(precio) from libro
+  group by editorial
+  having avg(precio)>25;
+```
+
+```sql
+ select editorial, count(*) from libro
+  group by editorial
+  having editorial<>'Planeta';
+```
+```sql
+ select editorial, avg(precio) from libro
+  group by editorial
+  having count(*) > 2; 
+```
+```sql
+ select editorial, max(precio) as mayor
+  from libro
+  group by editorial
+  having min(precio)<100 and
+  min(precio)>30
+  order by editorial; 
+```
+- `distinct` se especifica que los registros con ciertos datos duplicados sean obviadas en el resultado.
+
+```sql
+ select distinct autor from libro;
+```
+es como poner:
+```sql
+ select autor from libro
+  group by autor;
+```
+Contar distintos autores por editorial: 
+
+```sql
+ select editorial, count(distinct autor)
+  from libro
+  group by editorial;
+```
+
+```sql
+ select distinct titulo,editorial
+  from libro
+  order by titulo;
+```  
+```sql
+select id_producto from ventas as v where count(distinct(v.fecha)>1
+```
+#### Consultas de select con otro select
+Seleccionar producto con precio igual a la media:
+
+```sql
+select p.nombre from productos where p.precio = (select avg(precio) as media from producto)
+```
+```sql
+select p.precio<>(select avg(precio) as media from producto)
+```
+### Unir tablas 
+- where x.id = y.id
+```sql
+select p.nombre, v.precio from productos as p, ventas as v where p.id = v.id_producto;
+```
+
+
+## Funciones
+
+- `UPPER y LOWER` para mayúsculas o minúsculas
+```sql
+SELECT UPPER(nombre) AS nombre_mayusculas, LOWER(nombre) AS nombre_minusculas FROM empleados;
+```
+- `ROUND` redondear
+
+A dos decimales:
+```sql
+SELECT nombre, apellido, ROUND(salario, 2) AS salario_redondeado FROM empleados;
+```
+
+- `CURRENT DATA` fecha actual
+```sql
+SELECT CURRENT_DATE AS fecha_actual FROM empleados LIMIT 1;
+```
+- `Cast` Convierte una expresión a un tipo de datos específico.
+```sql
+SELECT nombre, apellido, CAST(salario AS INTEGER) AS salario_entero FROM empleados;
+```
+
+| Categoría                   | Función                           | Descripción                                               |
+|-----------------------------|-----------------------------------|-----------------------------------------------------------|
+| **Funciones de Texto**      | `LENGTH(str)`                     | Devuelve la longitud de la cadena.                         |
+|                             | `SUBSTR(str, start, length)`       | Devuelve una subcadena de la cadena dada.                 |
+|                             | `UPPER(str)`, `LOWER(str)`         | Convierte la cadena a mayúsculas o minúsculas.            |
+| **Funciones Numéricas**     | `ABS(x)`                          | Devuelve el valor absoluto de x.                           |
+|                             | `ROUND(x)`, `CEIL(x)`, `FLOOR(x)` | Redondeo de números.                                      |
+|                             | `MAX(x, y, ...)`, `MIN(x, y, ...)` | Devuelve el valor máximo o mínimo entre los argumentos.   |
+| **Funciones de Fecha y Hora**| `CURRENT_DATE`, `CURRENT_TIME`, `CURRENT_TIMESTAMP` | Devuelven la fecha, la hora o la marca de tiempo actuales. |
+|                             | `DATE(str)`, `TIME(str)`, `DATETIME(str)` | Extraen partes de una fecha o marca de tiempo.             |
+| **Funciones de Agregación**  | `SUM(column)`, `AVG(column)`      | Realizan operaciones de suma y promedio en una columna.    |
+|                             | `COUNT(column)`, `MAX(column)`, `MIN(column)` | Realizan operaciones de conteo, máximo y mínimo en una columna. |
+| **Funciones de Conversión**  | `CAST(expr AS type)`              | Convierte una expresión a un tipo de datos específico.    |
+| **Funciones de Manipulación de Cadenas** | `CONCAT(str1, str2, ...)`  | Concatena cadenas.                                        |
+| **Funciones de Control de Flujo** | `CASE WHEN condition THEN result END` | Realiza evaluaciones condicionales.                       |
+
+
+#### Exportar la bbdd a un fichero .sql.
+
+```sql
+sqlite> .output fichero.sql
+sqlite> .dump
+sqlite> .exit 
+```
+
+#### Importar archivo sql
+```sql
+.read fihero.sql
 ```
