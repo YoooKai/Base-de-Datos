@@ -69,6 +69,11 @@ Se puede realizar búsqueda con ese parámetro:
  );
 ```
 
+- `as` se usa para dar seudónimo a las tablas:
+```sql
+SELECT * FROM ejemplo AS e, ejemplo2 AS e2;
+```
+
 - **FOREIGN KEY** si se trata de una tabla intermedia, se tiene que referencial el id de la tabla a la que hace referencia:
 
 ```sql
@@ -353,7 +358,7 @@ La media por editorial:
   from libro
   group by editorial;
 ```
-- `having` permite seleccionar (o rechazar) un grupo de registros.
+- `having ?` permite seleccionar (o rechazar) un grupo de registros.
 
 ```sql
   select editorial, count(*) from libro
