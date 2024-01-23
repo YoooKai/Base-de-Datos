@@ -34,9 +34,9 @@ sqlite3 comment_section.db
 
 - Integer (si es boleano 0(falso) o 1(true))
 
-- Real  son números con decimales
+- Real  se usa para almacenar valores numéricos con decimales. Se utiliza como separador el punto (.). Definimos campos de este tipo para precios, por ejemplo.
 
-- Blob
+- Blob se usa para almacenar valores en formato binario (imágenes, archivos de sonido etc.)
 
 <br>
 
@@ -69,7 +69,7 @@ Se puede realizar búsqueda con ese parámetro:
  );
 ```
 
-- FOREIGN KEY si se trata de una tabla intermedia, se tiene que referencial el id de la tabla a la que hace referencia:
+- **FOREIGN KEY** si se trata de una tabla intermedia, se tiene que referencial el id de la tabla a la que hace referencia:
 
 ```sql
 create table editorial(
@@ -448,6 +448,13 @@ SELECT CURRENT_DATE AS fecha_actual FROM empleados LIMIT 1;
 ```sql
 SELECT nombre, apellido, CAST(salario AS INTEGER) AS salario_entero FROM empleados;
 ```
+- `length` Devuelve la longitud de la cadena.
+```sql
+SELECT title,
+       length(title) 
+  FROM albums
+ ORDER BY length(title) DESC;
+```
 
 | Categoría                   | Función                           | Descripción                                               |
 |-----------------------------|-----------------------------------|-----------------------------------------------------------|
@@ -465,6 +472,15 @@ SELECT nombre, apellido, CAST(salario AS INTEGER) AS salario_entero FROM emplead
 | **Funciones de Manipulación de Cadenas** | `CONCAT(str1, str2, ...)`  | Concatena cadenas.                                        |
 | **Funciones de Control de Flujo** | `CASE WHEN condition THEN result END` | Realiza evaluaciones condicionales.                       |
 
+- Case
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+```
 
 #### Exportar la bbdd a un fichero .sql.
 
