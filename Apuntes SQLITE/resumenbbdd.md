@@ -353,7 +353,7 @@ La media por editorial:
   from libro
   group by editorial;
 ```
-- `having ?` permite seleccionar (o rechazar) un grupo de registros.
+- `having` permite seleccionar (o rechazar) un grupo de registros.
 
 ```sql
   select editorial, count(*) from libro
@@ -385,6 +385,32 @@ La media por editorial:
   min(precio)>30
   order by editorial; 
 ```
+
+- `regexp o not regexp` busca patrones de modo similar a like y not like.
+```sql
+ select titulo,autor from libro
+  where autor regexp '[Hkw]';  
+```
+```sql
+ select autor from libro
+  where autor regexp '[a-d]';  
+```
+```sql
+ select titulo from libro
+  where titulo regexp '^A';  
+```
+```sql
+select titulo from libro
+  where titulo regexp 'HP$';  
+```
+Que no tengan h, k o w:
+
+```sql
+ select autor from libro
+  where autor not regexp '[Hkw]'; 
+```
+
+
 - `distinct` se especifica que los registros con ciertos datos duplicados sean obviadas en el resultado.
 
 ```sql
