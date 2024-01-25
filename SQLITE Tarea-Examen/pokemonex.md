@@ -1,3 +1,4 @@
+```sql
 --Kai Rodríguez García
 
 -- Actualizar el nivel de Bulbasaur.
@@ -422,4 +423,6 @@ SELECT p.nombre, p.nivel, t.nombre from pokemon as p, tipo as t where p.id_tipo=
 | Zapdos | 75 | Eléctrico/Azul |
 | Rhydon | 80 | Tierra |
 +------------+-------+----------------+
+
+```
 **/
