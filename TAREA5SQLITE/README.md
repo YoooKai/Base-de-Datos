@@ -1,7 +1,7 @@
 # TAREA 5 
 ## CONSULTAS EN SQLITE USANDO EXPRESIONES REGULARES
 
-<img arc="https://d7hftxdivxxvm.cloudfront.net/?quality=80&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx_bSYyLA9R3orH4s0X7VHA%252FHobbit%2Bdust%2Bjacket%2Bfront%2Bstraight%2Badjusted%2Bfor%2Btext%2Bpage.jpg&width=910" height="400px">
+<img src="https://d7hftxdivxxvm.cloudfront.net/?quality=80&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx_bSYyLA9R3orH4s0X7VHA%252FHobbit%2Bdust%2Bjacket%2Bfront%2Bstraight%2Badjusted%2Bfor%2Btext%2Bpage.jpg&width=910" height="400px">
 
 ### Selección de libros cuyo título comienza con "H".
 
