@@ -102,3 +102,11 @@
 | 27 | Funda para Laptop                 | 29.99  |
 | 28 | Adaptador HDMI                    | 12.99  |
 +----+-----------------------------------+--------+
+SELECT id, nombre, email
+FROM clientes
+WHERE id IN (
+    SELECT id_cliente
+    FROM pedidos
+    GROUP BY id_cliente
+    HAVING COUNT(id_pedido) > 1
+);
