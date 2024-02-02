@@ -1,7 +1,7 @@
 ## TAREA 6
 ## Consultas SQLITE
 
-
+```sql
 --Tabla Clientes
 /*
 +----+-----------------+---------------------------+
@@ -872,3 +872,4 @@ SELECT * from productos where nombre REGEXP '^[aiueoAIUEO]';
 | 28 | Adaptador HDMI           | 12.99  |
 +----+--------------------------+--------+
 */
+```
