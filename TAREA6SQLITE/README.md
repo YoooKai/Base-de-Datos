@@ -1,8 +1,10 @@
+```sql
 ## TAREA 6
 ## Consultas SQLITE
 
-```sql
+
 --Tabla Clientes
+/*
 +----+-----------------+---------------------------+
 | id |     nombre      |           email           |
 +----+-----------------+---------------------------+
@@ -36,8 +38,10 @@
 | 28 | Roberto Ruiz    | roberto@example.com       |
 | 29 | Celia García    | celia@example.com         |
 +----+-----------------+---------------------------+
+*/
 
 --tabla pedidos
+/*
 +-----------+------------+-------------+----------+--------------+
 | id_pedido | id_cliente | id_producto | cantidad | fecha_pedido |
 +-----------+------------+-------------+----------+--------------+
@@ -72,8 +76,9 @@
 | 29        | 29         | 29          | 1        | 2024-02-29   |
 | 30        | 30         | 30          | 3        | 2024-03-01   |
 +-----------+------------+-------------+----------+--------------+
-
+*/
 --tabla productos
+/*
 +----+-----------------------------------+--------+
 | id |              nombre               | precio |
 +----+-----------------------------------+--------+
@@ -106,10 +111,13 @@
 | 27 | Funda para Laptop                 | 29.99  |
 | 28 | Adaptador HDMI                    | 12.99  |
 +----+-----------------------------------+--------+
-
+*/
 
 -- Obtener todos los clientes.
+```sql
 SELECT id, nombre from clientes;
+```
+/*
 +----+-----------------+
 | id |     nombre      |
 +----+-----------------+
@@ -143,26 +151,35 @@ SELECT id, nombre from clientes;
 | 28 | Roberto Ruiz    |
 | 29 | Celia García    |
 +----+-----------------+
-
+*/
 
 -- Obtener la cantidad total de productos en todos los pedidos
+```sql
 select SUM(cantidad) as total_pedidos from pedidos;
+```
+/*
 +---------------+
 | total_pedidos |
 +---------------+
 | 54            |
 +---------------+
-
+*/
 -- Obtener el precio promedio de los productos:
+```sql
 select round(avg(precio),2) as precio_medio from productos;
+```
+/*
 +--------------+
 | precio_medio |
 +--------------+
 | 188.29       |
 +--------------+
-
+*/
 -- Obtener los clientes que tienen un email válido (contiene '@'):
+```sql
 select * from clientes where email REGEXP '@'{1,1};
+```
+/*
 +----+-----------------+---------------------------+
 | id |     nombre      |           email           |
 +----+-----------------+---------------------------+
@@ -195,19 +212,25 @@ select * from clientes where email REGEXP '@'{1,1};
 | 27 | Eva Torres      | eva.torres@example.com    |
 | 28 | Roberto Ruiz    | roberto@example.com       |
 | 29 | Celia García    | celia@example.com         |
-
+*/
 
 -- Obtener el producto más caro.
+```sql
 select id, nombre, max(precio) as producto_mas_caro from productos;
+```
+/*
 +----+--------+-------------------+
 | id | nombre | producto_mas_caro |
 +----+--------+-------------------+
 | 1  | Laptop | 1200.0            |
 +----+--------+-------------------+
-
+*/
 
 -- Obtener los pedidos realizados en febrero de 2024.
+```sql
 select * from pedidos where fecha_pedido regexp '2024-02-';
+```
+/*
 +-----------+------------+-------------+----------+--------------+
 | id_pedido | id_cliente | id_producto | cantidad | fecha_pedido |
 +-----------+------------+-------------+----------+--------------+
@@ -241,10 +264,13 @@ select * from pedidos where fecha_pedido regexp '2024-02-';
 | 28        | 28         | 28          | 2        | 2024-02-28   |
 | 29        | 29         | 29          | 1        | 2024-02-29   |
 +-----------+------------+-------------+----------+--------------+
-
+*/
 
 -- Obtener la cantidad total de productos en todos los pedidos por producto.
+```sql
 select pedidos.id_producto, sum(pedidos.cantidad) as pedido_total, productos.nombre from productos as productos, pedidos as pedidos where pedidos.id_producto=productos.id group by pedidos.id_producto;
+```
+/*
 +-------------+--------------+-----------------------------------+
 | id_producto | pedido_total |              nombre               |
 +-------------+--------------+-----------------------------------+
@@ -277,15 +303,18 @@ select pedidos.id_producto, sum(pedidos.cantidad) as pedido_total, productos.nom
 | 27          | 1            | Funda para Laptop                 |
 | 28          | 2            | Adaptador HDMI                    |
 +-------------+--------------+-----------------------------------+
-
+*/
 -- Obtener los clientes que han realizado más de un pedido.
+```sql
 SELECT id, nombre, email from clientes where id in (SELECT id_cliente FROM pedidos GROUP BY id_cliente HAVING COUNT(id_pedido) > 1;
-);
+```
 --NO hay resultados.
 
 -- Obtener los productos que tienen un precio registrado.
+```sql
 select * from productos where precio is not null;
-
+```
+/*
 +----+-----------------------------------+--------+
 | id |              nombre               | precio |
 +----+-----------------------------------+--------+
@@ -318,17 +347,23 @@ select * from productos where precio is not null;
 | 27 | Funda para Laptop                 | 29.99  |
 | 28 | Adaptador HDMI                    | 12.99  |
 +----+-----------------------------------+--------+
-
+*/
 -- Obtener la fecha del primer pedido realizado:
+```sql
 select * from pedidos order by fecha_pedido limit 1;
+```
+/*
 +-----------+------------+-------------+----------+--------------+
 | id_pedido | id_cliente | id_producto | cantidad | fecha_pedido |
 +-----------+------------+-------------+----------+--------------+
 | 1         | 1          | 1           | 2        | 2024-02-01   |
 +-----------+------------+-------------+----------+--------------+
-
+*/
 -- Obtener los productos cuyos nombres comienzan con 'A' o 'B':
+```sql
 SELECT * from productos where nombre REGEXP '^[AB]';
+```
+/*
 +----+------------------------+--------+
 | id |         nombre         | precio |
 +----+------------------------+--------+
@@ -337,9 +372,12 @@ SELECT * from productos where nombre REGEXP '^[AB]';
 | 18 | Batería Externa        | 19.99  |
 | 28 | Adaptador HDMI         | 12.99  |
 +----+------------------------+--------+
-
+*/
 -- Obtener la cantidad total de productos en todos los pedidos por cliente ordenado por cliente.
+```sql
 SELECT pedidos.id_cliente, clientes.nombre, sum(pedidos.cantidad) as total_productos from pedidos as pedidos, clientes as clientes where pedidos.id_cliente=clientes.id group by pedidos.id_cliente;
+```
+/*
 +------------+-----------------+-----------------+
 | id_cliente |     nombre      | total_productos |
 +------------+-----------------+-----------------+
@@ -373,16 +411,22 @@ SELECT pedidos.id_cliente, clientes.nombre, sum(pedidos.cantidad) as total_produ
 | 28         | Roberto Ruiz    | 2               |
 | 29         | Celia García    | 1               |
 +------------+-----------------+-----------------+
-
+*/
 -- Obtener los clientes que han realizado más de un pedido en febrero de 2024.
 
+```sql
 SELECT pedidos.id_cliente, clientes.nombre, pedidos.fecha_pedido from pedidos as pedidos,
  clientes as clientes where pedidos.id_cliente=clientes.id and pedidos.fecha_pedido REGEXP '2024-02' 
  group by clientes.id having count(pedidos.id_cliente)>1;
+
+```
 --No hay.
 
 -- Obtener los productos con precio entre 100 y 500.
+```sql
 SELECT * from productos where precio between 100 and 500;
+```
+/*
 +----+------------------------+--------+
 | id |         nombre         | precio |
 +----+------------------------+--------+
@@ -394,11 +438,13 @@ SELECT * from productos where precio between 100 and 500;
 | 10 | Reloj Inteligente      | 249.99 |
 | 13 | Monitor LED            | 349.99 |
 +----+------------------------+--------+
-
+*/
 -- Obtener la cantidad total de productos en todos los pedidos por cliente ordenado por cantidad descendente.
---sumar cantidad de productos de pedidos por id_cliente, ordenado cantidad desc
+```sql
 select clientes.id, clientes.nombre, sum(pedidos.cantidad) as total_pedidos from pedidos as pedidos, 
 clientes as clientes where clientes.id=pedidos.id_cliente group by pedidos.id_cliente order by pedidos.cantidad desc;
+```
+/*
 +----+-----------------+---------------+
 | id |     nombre      | total_pedidos |
 +----+-----------------+---------------+
@@ -432,9 +478,12 @@ clientes as clientes where clientes.id=pedidos.id_cliente group by pedidos.id_cl
 | 4  | Ana Rodríguez   | 1             |
 | 2  | María Gómez     | 1             |
 +----+-----------------+---------------+
-
+*/
 -- Obtener los clientes que tienen una 'a' en cualquier posición de su nombre.
+```sql
 SELECT * from clientes where nombre REGEXP '[aA]';
+```
+/*
 +----+-----------------+---------------------------+
 | id |     nombre      |           email           |
 +----+-----------------+---------------------------+
@@ -466,27 +515,35 @@ SELECT * from clientes where nombre REGEXP '[aA]';
 | 27 | Eva Torres      | eva.torres@example.com    |
 | 29 | Celia García    | celia@example.com         |
 +----+-----------------+---------------------------+
-
+*/
 
 -- Obtener el precio máximo de los productos.
+```sql
 SELECT id, nombre, max(precio) as mayor_precio from productos;
+```
+/*
 +----+--------+--------------+
 | id | nombre | mayor_precio |
 +----+--------+--------------+
 | 1  | Laptop | 1200.0       |
 +----+--------+--------------+
-
+*/
 -- Obtener los pedidos realizados por el cliente con ID 1 en febrero de 2024.
+```sql
 SELECT * from pedidos where id_cliente=1 and fecha_pedido REGEXP '2024-02';
+```
+/*
 +-----------+------------+-------------+----------+--------------+
 | id_pedido | id_cliente | id_producto | cantidad | fecha_pedido |
 +-----------+------------+-------------+----------+--------------+
 | 1         | 1          | 1           | 2        | 2024-02-01   |
 +-----------+------------+-------------+----------+--------------+
-
+*/
 -- Obtener la cantidad total de productos en todos los pedidos por producto ordenado por total de productos descendente
---sumar cantidad de pro(sumar id de producto) de la tabla pedidos, group by id_prod order desc
-sqlite> select productos.nombre, pedidos.id_pedido, sum(pedidos.cantidad) as total_cantidad from pedidos as pedidos, productos as productos where productos.id=pedidos.id_producto group by pedidos.id_producto order by total_cantidad desc;
+```sql
+ select productos.nombre, pedidos.id_pedido, sum(pedidos.cantidad) as total_cantidad from pedidos as pedidos, productos as productos where productos.id=pedidos.id_producto group by pedidos.id_producto order by total_cantidad desc;
+```
+/*
 +-----------------------------------+-----------+----------------+
 |              nombre               | id_pedido | total_cantidad |
 +-----------------------------------+-----------+----------------+
@@ -519,21 +576,29 @@ sqlite> select productos.nombre, pedidos.id_pedido, sum(pedidos.cantidad) as tot
 | Tablet                            | 4         | 1              |
 | Smartphone                        | 2         | 1              |
 +-----------------------------------+-----------+----------------+
-
+*/
 -- Obtener los productos que no tienen un precio registrado.
+```sql
 SELECT * from productos where precio is null;
+```
 --NO hay-
 
 -- Obtener la fecha del último pedido realizado.
+```sql
 select fecha_pedido from pedidos order by fecha_pedido desc limit 1;
+```
+/*
 +--------------+
 | fecha_pedido |
 +--------------+
 | 2024-03-01   |
 +--------------+
-
+*/
 -- Obtener los clientes cuyo nombre tiene al menos 5 caracteres.
+```sql
 select * from clientes where nombre regexp '.....';
+```
+/*
 +----+-----------------+---------------------------+
 | id |     nombre      |           email           |
 +----+-----------------+---------------------------+
@@ -567,9 +632,12 @@ select * from clientes where nombre regexp '.....';
 | 28 | Roberto Ruiz    | roberto@example.com       |
 | 29 | Celia García    | celia@example.com         |
 +----+-----------------+---------------------------+
-
+*/
 -- Obtener los productos que tienen la letra 'o' en cualquier posición del nombre.
+```sql
 select * from productos where nombre regexp '[Oo]';
+```
+/*
 +----+-----------------------------------+--------+
 | id |              nombre               | precio |
 +----+-----------------------------------+--------+
@@ -593,9 +661,12 @@ select * from productos where nombre regexp '[Oo]';
 | 27 | Funda para Laptop                 | 29.99  |
 | 28 | Adaptador HDMI                    | 12.99  |
 +----+-----------------------------------+--------+
-
+*/
 -- Obtener la cantidad total de productos en todos los pedidos por cliente ordenado por cliente.
+```sql
 SELECT pedidos.id_cliente, clientes.id, clientes.nombre, sum(pedidos.cantidad) as total_cantidad from clientes as clientes, pedidos as pedidos where clientes.id=pedidos.id_cliente group by clientes.id order by clientes.id;
+```
+/*
 +------------+----+-----------------+----------------+
 | id_cliente | id |     nombre      | total_cantidad |
 +------------+----+-----------------+----------------+
@@ -630,9 +701,12 @@ SELECT pedidos.id_cliente, clientes.id, clientes.nombre, sum(pedidos.cantidad) a
 | 29         | 29 | Celia García    | 1              |
 +------------+----+-----------------+----------------+
 
-
+*/
 -- Obtener los clientes cuyos nombres no contienen la letra 'i':
+```sql
 select * from clientes where nombre not regexp '[Iií]';
+```
+/*
 +----+-----------------+---------------------------+
 | id |     nombre      |           email           |
 +----+-----------------+---------------------------+
@@ -647,26 +721,35 @@ select * from clientes where nombre not regexp '[Iií]';
 | 23 | Clara Sánchez   | clara.sanchez@example.com |
 | 27 | Eva Torres      | eva.torres@example.com    |
 +----+-----------------+---------------------------+
-
+*/
 -- Obtener los pedidos realizados por el cliente con ID 2 en febrero de 2024.
+```sql
 select * from pedidos where id_cliente=2 and fecha_pedido REGEXP '2024-02';
+```
+/*
 +-----------+------------+-------------+----------+--------------+
 | id_pedido | id_cliente | id_producto | cantidad | fecha_pedido |
 +-----------+------------+-------------+----------+--------------+
 | 2         | 2          | 2           | 1        | 2024-02-02   |
 +-----------+------------+-------------+----------+--------------+
-
+*/
 -- Obtener el precio mínimo de los productos.
+```sql
 SELECT nombre, id, min(precio) as precio_minimo from productos;
+```
+/*
 +-----------------------------------+----+---------------+
 |              nombre               | id | precio_minimo |
 +-----------------------------------+----+---------------+
 | Kit de Limpieza para Computadoras | 22 | 9.99          |
 +-----------------------------------+----+---------------+
-
+*/
 -- Obtener los clientes que han realizado al menos un pedido en febrero de 2024.
+```sql
 SELECT clientes.id, clientes.nombre, pedidos.id_pedido, pedidos.fecha_pedido from clientes as clientes, 
 pedidos as pedidos where pedidos.id_pedido=clientes.id and fecha_pedido regexp '2024-02';
+```
+/*
 +----+-----------------+-----------+--------------+
 | id |     nombre      | id_pedido | fecha_pedido |
 +----+-----------------+-----------+--------------+
@@ -701,17 +784,24 @@ pedidos as pedidos where pedidos.id_pedido=clientes.id and fecha_pedido regexp '
 | 29 | Celia García    | 29        | 2024-02-29   |
 +----+-----------------+-----------+--------------+
 
+*/
 
 -- Obtener la fecha del último pedido realizado por el cliente con ID 3.
+```sql
 select fecha_pedido from pedidos where id_cliente=3 order by fecha_pedido desc limit 1;
+```
+/*
 +--------------+
 | fecha_pedido |
 +--------------+
 | 2024-02-03   |
 +--------------+
-
+*/
 -- Obtener los productos que tienen una 'a' al final del nombre.
+```sql
 select * from productos where nombre regexp '[aAá]$';
+```
+/*
 +----+--------------------+--------+
 | id |       nombre       | precio |
 +----+--------------------+--------+
@@ -719,25 +809,35 @@ select * from productos where nombre regexp '[aAá]$';
 | 18 | Batería Externa    | 19.99  |
 | 20 | Tarjeta de Memoria | 24.99  |
 +----+--------------------+--------+
-
+*/
 -- Obtener los clientes cuyos nombres tienen al menos 4 vocales (mayúsculas|minúsculas).
+```sql
 select * from clientes where nombre REGEXP '[aiueoAIUEO]{4}';
+```
 --No da resultado pero debería.
 
 -- Obtener los productos cuyo precio tenga al menos 4 números sin contrar los decimales.
+```sql
 select * from productos where precio REGEXP '^[0-9]{4,}\.';
+```
+/*
 +----+--------+--------+
 | id | nombre | precio |
 +----+--------+--------+
 | 1  | Laptop | 1200.0 |
 +----+--------+--------+
-
+*/
 -- Obtener los clientes cuyos nombres tienen al menos una 'a' seguida de una 'e'.
+```sql
 SELECT * from clientes where nombre REGEXP 'ae';
+```
 --NO hay.
 
 -- Obtener los productos cuyos nombres terminan con una consonante.
+```sql
 SELECT * from productos where nombre not REGEXP '[aioeuAIOEU]$';
+```
+/*
 +----+-----------------------------------+--------+
 | id |              nombre               | precio |
 +----+-----------------------------------+--------+
@@ -757,9 +857,12 @@ SELECT * from productos where nombre not REGEXP '[aioeuAIOEU]$';
 | 26 | Webcam HD                         | 59.99  |
 | 27 | Funda para Laptop                 | 29.99  |
 +----+-----------------------------------+--------+
-
+*/
 -- Obtener los productos cuyos nombres empiezan con una vocal.
+```sql
 SELECT * from productos where nombre REGEXP '^[aiueoAIUEO]';
+```
+/*
 +----+--------------------------+--------+
 | id |          nombre          | precio |
 +----+--------------------------+--------+
@@ -769,5 +872,6 @@ SELECT * from productos where nombre REGEXP '^[aiueoAIUEO]';
 | 19 | Estuche para Auriculares | 14.99  |
 | 28 | Adaptador HDMI           | 12.99  |
 +----+--------------------------+--------+
+*/
 
 ```
