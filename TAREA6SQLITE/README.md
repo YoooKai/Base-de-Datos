@@ -1,3 +1,6 @@
+## TAREA 6
+## Consultas SQLITE
+
 ```sql
 --Tabla Clientes
 +----+-----------------+---------------------------+
