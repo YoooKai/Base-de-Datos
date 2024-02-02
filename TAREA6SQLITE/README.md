@@ -1,3 +1,4 @@
+```sql
 --Tabla Clientes
 +----+-----------------+---------------------------+
 | id |     nombre      |           email           |
@@ -765,3 +766,5 @@ SELECT * from productos where nombre REGEXP '^[aiueoAIUEO]';
 | 19 | Estuche para Auriculares | 14.99  |
 | 28 | Adaptador HDMI           | 12.99  |
 +----+--------------------------+--------+
+
+```
