@@ -2,7 +2,7 @@
 -- Listar los coches vendidos con sus modelos y precios, junto con los nombres de los clientes que los compraron.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. ¿Qué es lo que no me han pedido?
-select coches.id_coche, coches.marca, coches.modelo, coches.precio, clientes.nombre from clientes as clientes, coches as coches, ventas as ventas where coches.id_coche=ventas.id_coche and clientes.id_cliente=ventas.id_cliente;
+select coches.id_coche, coches.marca, coches.modelo, coches.precio, clientes.nombre from clientes, coches, ventas where coches.id_coche=ventas.id_coche and clientes.id_cliente=ventas.id_cliente;
 
 +----------+------------+----------------+---------+-----------------+
 | id_coche |   marca    |     modelo     | precio  |     nombre      |
@@ -23,7 +23,7 @@ select coches.id_coche, coches.marca, coches.modelo, coches.precio, clientes.nom
   -- Cosas que debo de tener en cuenta:
     -- Precios superiores.
     -- Obtener la media. AVG(precio)
-select clientes.*, coches.precio as precio_coche from clientes as clientes, ventas as ventas, coches as coches where clientes.id_cliente = ventas.id_cliente and coches.id_coche = ventas.id_coche and coches.precio > (select avg(precio) from coches);
+select clientes.*, coches.precio as precio_coche from clientes, ventas, coches where clientes.id_cliente = ventas.id_cliente and coches.id_coche = ventas.id_coche and coches.precio > (select avg(precio) from coches);
 +------------+-----------------+------+----------------+--------------+
 | id_cliente |     nombre      | edad |   direccion    | precio_coche |
 +------------+-----------------+------+----------------+--------------+
@@ -51,7 +51,7 @@ select * from coches where id_coche not in (select id_coche from ventas);
 -- Calcular el total gastado por todos los clientes en coches:
   -- Cosas que debo de tener en cuenta:
     -- Me estan pidiendo la suma total de todos los coches vendidos, NO de aquellos que aún no se han vendido.
-select sum(coches.precio) as suma_total from coches as coches, ventas as ventas where coches.id_coche = ventas.id_coche;
+select sum(coches.precio) as suma_total from coches, ventas where coches.id_coche = ventas.id_coche;
 +------------+
 | suma_total |
 +------------+
@@ -62,7 +62,7 @@ select sum(coches.precio) as suma_total from coches as coches, ventas as ventas 
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. ¿Por qué campo tengo que ordenadar. Es uno o más campos?
 
-select ventas.fecha_venta, clientes.id_cliente, clientes.nombre, coches.* from coches as coches, clientes as clientes, ventas as ventas where coches.id_coche = ventas.id_coche and clientes.id_cliente = ventas.id_cliente order by fecha_venta desc;
+select ventas.fecha_venta, clientes.id_cliente, clientes.nombre, coches.* from coches as coches, clientes, ventas where coches.id_coche = ventas.id_coche and clientes.id_cliente = ventas.id_cliente order by fecha_venta desc;
 +-------------+------------+-----------------+----------+----------------+------------+------+---------+
 | fecha_venta | id_cliente |     nombre      | id_coche |     modelo     |   marca    | año  | precio  |
 +-------------+------------+-----------------+----------+----------------+------------+------+---------+
@@ -90,8 +90,8 @@ select coches.*, max(precio) as precio_máximo from coches;
 -- Mostrar los clientes que han comprado al menos un coche (un coche o más) y la cantidad de coches comprados.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. COUNT
-select clientes.*, count(ventas.id_cliente) as total_coches from clientes as clientes, 
-ventas as ventas where clientes.id_cliente = ventas.id_cliente group by clientes.id_cliente;
+select clientes.*, count(ventas.id_cliente) as total_coches from clientes, 
+ventas where clientes.id_cliente = ventas.id_cliente group by clientes.id_cliente;
 +------------+-----------------+------+----------------+--------------+
 | id_cliente |     nombre      | edad |   direccion    | total_coches |
 +------------+-----------------+------+----------------+--------------+
@@ -109,7 +109,7 @@ ventas as ventas where clientes.id_cliente = ventas.id_cliente group by clientes
 -- Encontrar los clientes que han comprado coches de la marca 'Toyota':
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. Like | regexp | =. Tabla normalizada ?.
-select clientes.id_cliente, clientes.nombre, coches.marca from clientes as clientes, ventas as ventas, coches as coches
+select clientes.id_cliente, clientes.nombre, coches.marca from clientes as clientes, ventas, coches
 where clientes.id_cliente = ventas.id_cliente and coches.id_coche = ventas.id_coche and coches.marca = 'Toyota';
 +------------+------------+--------+
 | id_cliente |   nombre   | marca  |
