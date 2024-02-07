@@ -170,19 +170,19 @@ clientes as clientes, ventas as ventas where coches.id_coche = ventas.id_coche a
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. COUNT| DESC|ASC precio
 
-select coches.marca, count(ventas.id_coche) as ventas_totales from coches as coches, 
+select coches.marca, count(ventas.*) as ventas_totales from coches as coches, 
 ventas as ventas where ventas.id_coche = coches.id_coche group by ventas.id_coche order by ventas_totales desc;
 +------------+----------------+
 |   marca    | ventas_totales |
 +------------+----------------+
-| Tesla      | 1              |
-| Mazda      | 1              |
-| Hyundai    | 1              |
-| Volkswagen | 1              |
-| Nissan     | 1              |
-| Chevrolet  | 1              |
-| Ford       | 1              |
-| Honda      | 1              |
-| Toyota     | 1              |
+| Tesla      | 2              |
+| Mazda      | 2              |
+| Hyundai    | 2              |
+| Volkswagen | 2              |
+| Nissan     | 2              |
+| Chevrolet  | 2              |
+| Ford       | 2              |
+| Honda      | 2              |
+| Toyota     | 2              |
 +------------+----------------+
 ```
