@@ -1,5 +1,11 @@
 ```sql
 -- Consulta para obtener el nombre y la edad de los clientes que han comprado coches de la marca Toyota.
+select clientes.nombre, clientes.edad, coches.marca from coches, clientes, ventas where coches.marca = "Toyota" and clientes.id_cliente=ventas.id_cliente and coches.id_coche=ventas.id_coche;
++------------+------+--------+
+|   nombre   | edad | marca  |
++------------+------+--------+
+| Juan Pérez | 30   | Toyota |
++------------+------+--------+
 -- Consulta para calcular el precio promedio de los coches vendidos.
 select round(avg(coches.precio), 2) as promedio_precio from coches, ventas where coches.id_coche=ventas.id_coche;
 +-----------------+
