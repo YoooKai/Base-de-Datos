@@ -3,6 +3,8 @@
 ```sql
 
 --ALUMNOS
+
+```sql
 +----+--------+------+-----------+
 | id | nombre | edad | direccion |
 +----+--------+------+-----------+
@@ -17,8 +19,9 @@
 | 9  | Lucía  | 22   | Calle I   |
 | 10 | Miguel | 19   | Calle J   |
 +----+--------+------+-----------+
-
+```
 --clases
+```sql
 +----+------------------------+-------------+------------+
 | id |         nombre         |   materia   |  profesor  |
 +----+------------------------+-------------+------------+
@@ -33,8 +36,9 @@
 | 9  | Economía Internacional | Economía    | Profesor R |
 | 10 | Derecho Penal          | Derecho     | Profesor Q |
 +----+------------------------+-------------+------------+
-
+```
 --inscripciones
+```sql
 +----+-----------+----------+
 | id | id_alumno | id_clase |
 +----+-----------+----------+
@@ -49,10 +53,11 @@
 | 9  | 5         | 9        |
 | 10 | 6         | 10       |
 +----+-----------+----------+
-
+```
 -- Obtener el nombre del alumno y el nombre de la clase en la que está inscrito.
 
-select a.nombre, c.nombre from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase; 
+select a.nombre, c.nombre from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase;
+```sql
 +--------+------------------------+
 | nombre |         nombre         |
 +--------+------------------------+
@@ -67,10 +72,10 @@ select a.nombre, c.nombre from inscripciones as i inner join alumnos as a on a.i
 | Carlos | Economía Internacional |
 | Ana    | Derecho Penal          |
 +--------+------------------------+
-
+```
 -- Obtener el nombre del alumno y la materia de las clases en las que está inscrito.
 select a.nombre, c.materia from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase; 
-
+```sql
 +--------+-------------+
 | nombre |   materia   |
 +--------+-------------+
@@ -85,10 +90,10 @@ select a.nombre, c.materia from inscripciones as i inner join alumnos as a on a.
 | Carlos | Economía    |
 | Ana    | Derecho     |
 +--------+-------------+
-
+```
 -- Obtener el nombre del alumno, la edad y el nombre del profesor de las clases en las que está inscrito.
 select a.nombre, a.edad, c.profesor from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase; 
-
+```sql
 +--------+------+------------+
 | nombre | edad |  profesor  |
 +--------+------+------------+
@@ -103,9 +108,10 @@ select a.nombre, a.edad, c.profesor from inscripciones as i inner join alumnos a
 | Carlos | 20   | Profesor R |
 | Ana    | 19   | Profesor Q |
 +--------+------+------------+
-
+```
 -- Obtener el nombre del alumno, drecc de alumno y las clases en las que está inscrito.
 select a.nombre, a.direccion, c.id, c.nombre from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase; 
+```sql
 +--------+-----------+----+------------------------+
 | nombre | direccion | id |         nombre         |
 +--------+-----------+----+------------------------+
@@ -121,9 +127,10 @@ select a.nombre, a.direccion, c.id, c.nombre from inscripciones as i inner join 
 | Ana    | Calle F   | 10 | Derecho Penal          |
 +--------+-----------+----+------------------------+
 
-
+```
 -- Obtener el nombre del alumno y el nombre de la clase junto con el profesor.
 select a.nombre, c.nombre, c.profesor from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase;
+```sql
 +--------+------------------------+------------+
 | nombre |         nombre         |  profesor  |
 +--------+------------------------+------------+
@@ -138,10 +145,11 @@ select a.nombre, c.nombre, c.profesor from inscripciones as i inner join alumnos
 | Carlos | Economía Internacional | Profesor R |
 | Ana    | Derecho Penal          | Profesor Q |
 +--------+------------------------+------------+
-
+```
 
 -- Obtener el nombre del alumno, la materia y el nombre del profesor de las clases en las que está inscrito.
 select a.nombre, c.materia, c.profesor from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase;
+```sql
 +--------+-------------+------------+
 | nombre |   materia   |  profesor  |
 +--------+-------------+------------+
@@ -156,9 +164,10 @@ select a.nombre, c.materia, c.profesor from inscripciones as i inner join alumno
 | Carlos | Economía    | Profesor R |
 | Ana    | Derecho     | Profesor Q |
 +--------+-------------+------------+
-
+```
 -- Obtener el nombre del alumno, la edad y la materia de las clases en las que está inscrito.
 select a.nombre, a.edad, c.materia  from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase;
+```sql
 +--------+------+-------------+
 | nombre | edad |   materia   |
 +--------+------+-------------+
@@ -173,9 +182,10 @@ select a.nombre, a.edad, c.materia  from inscripciones as i inner join alumnos a
 | Carlos | 20   | Economía    |
 | Ana    | 19   | Derecho     |
 +--------+------+-------------+
-
+```
 -- Obtener el nombre del alumno, la dirección y el profesor de las clases en las que está inscrito.
 select a.nombre, a.direccion, c.profesor from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase;
+```sql
 +--------+-----------+------------+
 | nombre | direccion |  profesor  |
 +--------+-----------+------------+
@@ -190,9 +200,10 @@ select a.nombre, a.direccion, c.profesor from inscripciones as i inner join alum
 | Carlos | Calle E   | Profesor R |
 | Ana    | Calle F   | Profesor Q |
 +--------+-----------+------------+
-
+```
 -- Obtener el nombre del alumno y la materia de las clases en las que está inscrito, ordenado por el nombre del alumno.
 select a.nombre, c.materia from inscripciones as i inner join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase order by a.nombre;
+```sql
 +--------+-------------+
 | nombre |   materia   |
 +--------+-------------+
@@ -207,10 +218,10 @@ select a.nombre, c.materia from inscripciones as i inner join alumnos as a on a.
 | Pedro  | Química     |
 | Pedro  | Física      |
 +--------+-------------+
-
+```
 -- Contar cuántos alumnos están inscritos en cada clase.
 select c.id, c.nombre, count(a.id) as total_alumnos from inscripciones as i join alumnos as a on a.id=i.id_alumno join clases as c on c.id=i.id_clase group by c.id;
-
+```sql
 +----+------------------------+---------------+
 | id |         nombre         | total_alumnos |
 +----+------------------------+---------------+
@@ -225,5 +236,5 @@ select c.id, c.nombre, count(a.id) as total_alumnos from inscripciones as i join
 | 9  | Economía Internacional | 1             |
 | 10 | Derecho Penal          | 1             |
 +----+------------------------+---------------+
-
+```
 ```
