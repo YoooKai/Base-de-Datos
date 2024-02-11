@@ -1,4 +1,5 @@
 # TAREA 10
+#### He recortado los resultados de varias consultas ya que si no, no podía visualizarse el documento debido a su gran tamaño.
 
 1. Proporciona una consulta que muestre solo los clientes de Brasil.
 
@@ -254,7 +255,7 @@ select i.total as InvoiceTotal, c.CustomerId, c.FirstName || ' ' || c.LastName a
 | 1.98         | 29         | Robert Brown      | Canada          | Jane Peacock |
 | 13.86        | 29         | Robert Brown      | Canada          | Jane Peacock |
 
-    ¿Cuántas facturas hubo en 2009 y 2011? ¿Cuáles son las ventas totales respectivas para cada uno de esos años?
+   8. ¿Cuántas facturas hubo en 2009 y 2011? ¿Cuáles son las ventas totales respectivas para cada uno de esos años?
 
 select count(InvoiceId) as TotalInvoices, substr(InvoiceDate, 1, 4) as Year,
 sum(total) as TotalSales from Invoices group by Year;
@@ -267,7 +268,7 @@ sum(total) as TotalSales from Invoices group by Year;
 | 83            | 2012 | 477.53     |
 | 80            | 2013 | 450.58     |
 
-    Mirando la tabla de InvoiceLine, proporciona una consulta que CUENTE el número de ítems de línea
+   9- Mirando la tabla de InvoiceLine, proporciona una consulta que CUENTE el número de ítems de línea
     para el ID de factura 37.
 
 select InvoiceId, count(InvoiceLineId) as Items from Invoice_items where InvoiceId = 37;
@@ -681,7 +682,7 @@ e.Title = 'Sales Support Agent' group by e.employeeId;
 | 5          | Steve     | Johnson  | 126         |
 
 17. ¿Qué agente de ventas realizó más ventas en 2009?
-
+```sql
 SELECT e.EmployeeId, e.FirstName, e.LastName, COUNT(i.InvoiceId) AS total_sales FROM employees AS e, customers AS c,
 invoices AS i WHERE e.EmployeeId = c.SupportRepId AND c.CustomerId = i.CustomerId AND
 e.Title = 'Sales Support Agent' AND i.InvoiceDate regexp 2009 GROUP BY e.EmployeeId ORDER
@@ -691,7 +692,7 @@ SELECT e.EmployeeId, e.FirstName, e.LastName, COUNT(i.InvoiceId) AS total_sales 
 ON e.EmployeeId = c.SupportRepId JOIN invoices AS i ON c.CustomerId = i.CustomerId WHERE
 e.Title = 'Sales Support Agent' AND i.InvoiceDate regexp 2009 GROUP BY e.EmployeeId
 ORDER BY total_sales DESC LIMIT 1;
-
+```
 | EmployeeId | FirstName | LastName | total_sales |
 | ---------- | --------- | -------- | ----------- |
 | 4          | Margaret  | Park     | 30          |
