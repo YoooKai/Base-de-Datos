@@ -1,3 +1,7 @@
+select e.employeeid, count(i.InvoiceID) as top_sales
+from employees as e, customers as c, invoices as i where e.employeeId=c.SupportRepId and 
+c.CustomerID=i.CustomerId and
+e.Title = 'Sales Support Agent' group by e.employeeId, order by top_sales, limit by 1;
 
     Proporciona una consulta que muestre el Total de la Factura, nombre del cliente, país y 
     nombre del Agente de Ventas para todas las facturas y clientes.
