@@ -1,4 +1,5 @@
 # TAREA 10
+
 #### He recortado los resultados de varias consultas ya que si no, no podía visualizarse el documento debido a su gran tamaño.
 
 1. Proporciona una consulta que muestre solo los clientes de Brasil.
@@ -255,7 +256,7 @@ select i.total as InvoiceTotal, c.CustomerId, c.FirstName || ' ' || c.LastName a
 | 1.98         | 29         | Robert Brown      | Canada          | Jane Peacock |
 | 13.86        | 29         | Robert Brown      | Canada          | Jane Peacock |
 
-   8. ¿Cuántas facturas hubo en 2009 y 2011? ¿Cuáles son las ventas totales respectivas para cada uno de esos años?
+8.  ¿Cuántas facturas hubo en 2009 y 2011? ¿Cuáles son las ventas totales respectivas para cada uno de esos años?
 
 select count(InvoiceId) as TotalInvoices, substr(InvoiceDate, 1, 4) as Year,
 sum(total) as TotalSales from Invoices group by Year;
@@ -268,8 +269,8 @@ sum(total) as TotalSales from Invoices group by Year;
 | 83            | 2012 | 477.53     |
 | 80            | 2013 | 450.58     |
 
-   9- Mirando la tabla de InvoiceLine, proporciona una consulta que CUENTE el número de ítems de línea
-    para el ID de factura 37.
+9- Mirando la tabla de InvoiceLine, proporciona una consulta que CUENTE el número de ítems de línea
+para el ID de factura 37.
 
 select InvoiceId, count(InvoiceLineId) as Items from Invoice_items where InvoiceId = 37;
 | InvoiceId | Items |
@@ -505,19 +506,15 @@ qlite> select t.Name as TrackName, t.Composer, i.InvoiceLineId from Tracks as t,
 
 13. Proporciona una consulta que muestre el número total de pistas en cada lista de reproducción.
     El nombre de la lista de reproducción debe estar incluido en la tabla resultante.
-
+```sql
 select p.Name as PlaylistName, count(pt.TrackId) as TotalTracks from playlists as p, playlist_track as pt where p.Playlistid=pt.Playlistid group by p.playlistid, p.Name;
 
-SELECT
-p.Name AS PlaylistName,
-COUNT(pt.TrackId) AS TotalTracks
-FROM
-playlists AS p
-JOIN
-playlist_track AS pt ON p.PlaylistId = pt.PlaylistId
+SELECT p.Name AS PlaylistName,
+COUNT(pt.TrackId) AS TotalTracks FROM playlists AS p
+JOIN playlist_track AS pt ON p.PlaylistId = pt.PlaylistId
 GROUP BY
 p.PlaylistId, p.Name;
-
+```
 | PlaylistName               | TotalTracks |
 | -------------------------- | ----------- |
 | Music                      | 3290        |
@@ -542,6 +539,14 @@ p.PlaylistId, p.Name;
 select t.Name as TrackName, g.Name as TrackGenre, a.Title as AlbumTitle, mt.MediaTYpeId from tracks as t, genres as g,
 albums as a, media_types as mt where
 t.MediaTypeId=mt.MediaTypeId and t.GenreId=g.GenreId and a.AlbumId=t.AlbumId;
+
+SELECT
+    t.Name AS TrackName,
+    g.Name AS TrackGenre,
+    a.Title AS AlbumTitle,
+    mt.MediaTypeId FROM tracks AS t JOIN genres AS g ON t.GenreId = g.GenreId JOIN albums AS a ON t.AlbumId = a.AlbumId JOIN
+    media_types AS mt ON t.MediaTypeId = mt.MediaTypeId;
+
 ```
 
 | TrackName                               | TrackGenre | AlbumTitle                            | MediaTypeId |
@@ -682,6 +687,7 @@ e.Title = 'Sales Support Agent' group by e.employeeId;
 | 5          | Steve     | Johnson  | 126         |
 
 17. ¿Qué agente de ventas realizó más ventas en 2009?
+
 ```sql
 SELECT e.EmployeeId, e.FirstName, e.LastName, COUNT(i.InvoiceId) AS total_sales FROM employees AS e, customers AS c,
 invoices AS i WHERE e.EmployeeId = c.SupportRepId AND c.CustomerId = i.CustomerId AND
@@ -693,6 +699,7 @@ ON e.EmployeeId = c.SupportRepId JOIN invoices AS i ON c.CustomerId = i.Customer
 e.Title = 'Sales Support Agent' AND i.InvoiceDate regexp 2009 GROUP BY e.EmployeeId
 ORDER BY total_sales DESC LIMIT 1;
 ```
+
 | EmployeeId | FirstName | LastName | total_sales |
 | ---------- | --------- | -------- | ----------- |
 | 4          | Margaret  | Park     | 30          |
@@ -730,6 +737,14 @@ select * from playlist;
 select t.trackId, t.Name as TrackName, p.PlaylistId, p.Name as PlaylistName
 from playlists as p, playlist_track as pt, tracks as t
 where t.trackid=pt.trackid and pt.playlistid=p.playlistid order by p.Name;
+
+SELECT
+    t.TrackId,
+    t.Name AS TrackName,
+    p.PlaylistId,
+    p.Name AS PlaylistName
+FROM playlists AS p JOIN playlist_track AS pt ON p.PlaylistId = pt.PlaylistId JOIN tracks AS t ON pt.TrackId = t.TrackId ORDER BY p.Name;
+
 ```
 
 | TrackId | TrackName                   | PlaylistId | PlaylistName |
@@ -843,6 +858,17 @@ select t.trackId, t.Name as TrackName, g.Name as Genre, mt.Name as MediaType, p.
 from playlists as p, playlist_track as pt, tracks as t, genres as g, media_types as mt
 where t.trackid=pt.trackid and pt.playlistid=p.playlistid and mt.MediaTypeId=t.MediaTypeId
 and t.GenreId=g.GenreID and p.Name = 'Grunge';
+
+SELECT
+    t.TrackId,
+    t.Name AS TrackName,
+    g.Name AS Genre,
+    mt.Name AS MediaType,
+    p.PlaylistId,
+    p.Name AS PlaylistName FROM playlists AS p JOIN  playlist_track AS pt ON p.PlaylistId = pt.PlaylistId JOIN
+    tracks AS t ON pt.TrackId = t.TrackId JOIN genres AS g ON t.GenreId = g.GenreId JOIN
+    media_types AS mt ON t.MediaTypeId = mt.MediaTypeId WHERE p.Name = 'Grunge';
+
 ```
 
 | TrackId | TrackName               | Genre       | MediaType                | PlaylistId | PlaylistName |
