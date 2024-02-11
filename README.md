@@ -1,7 +1,45 @@
-select e.employeeid, count(i.InvoiceID) as top_sales
-from employees as e, customers as c, invoices as i where e.employeeId=c.SupportRepId and 
-c.CustomerID=i.CustomerId and
-e.Title = 'Sales Support Agent' group by e.employeeId, order by top_sales, limit by 1;
+
+SELECT 
+    e.EmployeeId,
+    COUNT(i.InvoiceId) AS total_sales 
+FROM 
+    employees AS e, 
+    customers AS c, 
+    invoices AS i 
+WHERE 
+    e.EmployeeId = c.SupportRepId 
+    AND c.CustomerId = i.CustomerId 
+    AND e.Title = 'Sales Support Agent' 
+    AND YEAR(i.InvoiceDate) = 2009 
+GROUP BY 
+    e.EmployeeId
+ORDER BY 
+    total_sales DESC
+LIMIT 1;
+
+
+
+SELECT 
+    e.EmployeeId,
+    COUNT(i.InvoiceId) AS total_sales 
+FROM 
+    employees AS e
+JOIN 
+    customers AS c ON e.EmployeeId = c.SupportRepId
+JOIN 
+    invoices AS i ON c.CustomerId = i.CustomerId 
+WHERE 
+    e.Title = 'Sales Support Agent' 
+    AND YEAR(i.InvoiceDate) = 2009 
+GROUP BY 
+    e.EmployeeId
+ORDER BY 
+    total_sales DESC
+LIMIT 1;
+
+
+
+
 
     Proporciona una consulta que muestre el Total de la Factura, nombre del cliente, país y 
     nombre del Agente de Ventas para todas las facturas y clientes.
