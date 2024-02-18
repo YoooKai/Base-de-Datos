@@ -1,5 +1,7 @@
 # Consultas a Realizar
+
 <img src="https://raw.githubusercontent.com/jpexposito/docencia/master/Primero/BAE/UNIDAD-5/tareas/tarea11/img/jardineria-er.png">
+
 # Consultas SQL sobre una tabla
 
 ```sql
