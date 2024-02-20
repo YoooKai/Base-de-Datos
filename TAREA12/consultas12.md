@@ -6,13 +6,6 @@
 </div>
 
 Dadas las siguientes tablas :
-cliente:
-  - id: entero autoincremental y clave primaria
-  - nombre: texto
-  - apelllido1: texto
-  - apelllido2: texto
-  - ciudad: texto
-  - categoria: entero
 
 ```sql
 create table cliente(
@@ -24,12 +17,6 @@ create table cliente(
     categoria integer
 );
 ```
-comercial
-  - id: entero autoincremental y clave primaria
-  - nombre: texto
-  - apelllido1: texto
-  - apelllido2: texto
-  - categoria: real
 
 ```sql
 create table comercial(
@@ -41,13 +28,6 @@ create table comercial(
 );
 ```
 
-pedido
-  - id: entero autoincremental y clave primaria
-  - total: real
-  - fecha: texto
-  - id_cliente: entero
-  - id_comercial: entero  
-
 ```sql
 create table pedido(
     id INTEGER not null PRIMARY KEY AUTOINCREMENT,
@@ -57,7 +37,6 @@ create table pedido(
     id_comercial integer
 );
 ```
-
 Se pide:
 
 Crea la estrucuta de tablas en función de las propiedades y sus nombres para determinar las claves primarias, claves foraneas. El fichero de la __BBDD__ debe de llamarse __ventas.db__.
