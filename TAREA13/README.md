@@ -493,23 +493,15 @@ select * from departamento where id not in (select id_departamento from profesor
     
 4. Devuelve un listado con los profesores que tienen un departamento asociado y que no imparten ninguna asignatura.
 ```sql
-select p.* from persona as p join profesor as pro on p.id = pro.id_profesor join departamento as d on d.id = pro.id_departamento where not exists (select 1 from asignatura as a where a.id_profesor = pro.id_profesor);
+select pr.id_profesor from profesor as pr where p.id_profesor nit in (select id_departamento from profesor as pr)
+
 ```
-| id |    nif    |  nombre   | apellido1  | apellido2  | ciudad  |         direccion         | telefono  | fecha_nacimiento | sexo |   tipo   |
-|----|-----------|-----------|------------|------------|---------|---------------------------|-----------|------------------|------|----------|
-| 5  | 38223286T | David     | Schmidt    | Fisher     | Almería | C/ Venus                  | 678516294 | 1978/01/19       | H    | profesor |
-| 8  | 79503962T | Cristina  | Lemke      | Rutherford | Almería | C/ Saturno                | 669162534 | 1977/08/21       | M    | profesor |
-| 10 | 61142000L | Esther    | Spencer    | Lakin      | Almería | C/ Plutón                 |           | 1977/05/19       | M    | profesor |
-| 12 | 85366986W | Carmen    | Streich    | Hirthe     | Almería | C/ Almanzora              |           | 1971-04-29       | M    | profesor |
-| 13 | 73571384L | Alfredo   | Stiedemann | Morissette | Almería | C/ Guadalquivir           | 950896725 | 1980/02/01       | H    | profesor |
-| 15 | 80502866Z | Alejandro | Kohler     | Schoen     | Almería | C/ Tajo                   | 668726354 | 1980/03/14       | H    | profesor |
-| 16 | 10485008K | Antonio   | Fahey      | Considine  | Almería | C/ Sierra de los Filabres |           | 1982/03/18       | H    | profesor |
-| 17 | 85869555K | Guillermo | Ruecker    | Upton      | Almería | C/ Sierra de Gádor        |           | 1973/05/05       | H    | profesor |
-| 18 | 04326833G | Micaela   | Monahan    | Murray     | Almería | C/ Veleta                 | 662765413 | 1976/02/25       | H    | profesor |
-| 20 | 79221403L | Francesca | Schowalter | Muller     | Almería | C/ Quinto pino            |           | 1980/10/31       | H    | profesor |
+
 
 5. Devuelve un listado con las asignaturas que no tienen un profesor asignado.
 ```sql
+select a.* from asignatura as a where not exists (select id_profesor from profesor as p where p.id_profesor = a.id_profesor);
+
 select a.* from asignatura as a where not exists (select id_profesor from profesor as p where p.id_profesor = a.id_profesor);
 ```
 | id |                            nombre                            | creditos |    tipo     | curso | cuatrimestre | id_profesor | id_grado |
@@ -581,5 +573,5 @@ select a.* from asignatura as a where not exists (select id_profesor from profes
     
 6. Devuelve un listado con todos los departamentos que no han impartido asignaturas en ningún curso escolar.
 ```sql
-select * from departamento where id not in (select id_profesor from profesor);
+select d.* from departamento as d where id not in (select distinct(id_profesor) from profesor where id_profesor in (select distinct(id_profesor) from asignatura));
 ```
