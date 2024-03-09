@@ -1,7 +1,7 @@
 
-# TAREA 01 SQL
+# TAREA 01
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" height="150px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" height="250px">
 
 ## Crear base de datos
 
