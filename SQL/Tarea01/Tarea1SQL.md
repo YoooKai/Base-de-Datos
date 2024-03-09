@@ -149,7 +149,7 @@ select avg(edad) as edad_promedio from usuarios;
 
 9. Mostrar los usuarios que tienen la letra 'a' en su nombre.
 ```sql
-select * from usuarios where nombre regexp '[A|a]';
+select * from usuarios where nombre regexp '[Aa]';
 +----+--------+------+-------------------+
 | id | nombre | edad | correo            |
 +----+--------+------+-------------------+
