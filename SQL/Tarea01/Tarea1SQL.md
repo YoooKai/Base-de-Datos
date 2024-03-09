@@ -1,7 +1,7 @@
 
 # TAREA 01 SQL
 
-<img scr="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png">
+<img scr="[https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png](https://cdn-icons-png.flaticon.com/512/4299/4299956.png)">
 
 ## Crear base de datos
 
