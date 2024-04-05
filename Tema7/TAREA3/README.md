@@ -3,7 +3,7 @@
 # Tarea 3 de trabajo con índices
 
 <div align="center">
-<img src="https://i.ytimg.com/vi/CPVKvcj5tTw/maxresdefault.jpg"/>
+<img src="https://i.ytimg.com/vi/CPVKvcj5tTw/maxresdefault.jpg" height="400px"/>
 </div>
 
 Se pide ejecutar cada una de las acciones necesarias para realizar las operaciones indicadas.
