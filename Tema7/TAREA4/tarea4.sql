@@ -2169,7 +2169,611 @@ select c.country, ci.city, a.address, s.staff_id, s.first_name, s.last_name from
 | Australia | Woodridge  | 1411 Lillydale Drive |        2 | Jon        | Stephens  |
 +-----------+------------+----------------------+----------+------------+-----------+
     -- Mostrar el country, la ciudad y dirección de cada customer.
-select c.country, ci.city, a.address, cu.first_name, cu.last_name, cu.customer_id from country as c join city as ci on ci.country_id=c.country_id join address as a on a.city_id=ci.city_id join customer as cu on a.adress_id=cu.adress_id;
+select c.country, ci.city, a.address, cu.first_name, cu.last_name, cu.customer_id from country as c join city as ci on ci.country_id=c.country_id join address as a on a.city_id=ci.city_id join customer as cu on a.address_id=cu.address_id order by cu.customer_id;
++---------------------------------------+----------------------------+----------------------------------------+-------------+--------------+-------------+
+| country                               | city                       | address                                | first_name  | last_name    | customer_id |
++---------------------------------------+----------------------------+----------------------------------------+-------------+--------------+-------------+
+| Japan                                 | Sasebo                     | 1913 Hanoi Way                         | MARY        | SMITH        |           1 |
+| United States                         | San Bernardino             | 1121 Loja Avenue                       | PATRICIA    | JOHNSON      |           2 |
+| Greece                                | Athenai                    | 692 Joliet Street                      | LINDA       | WILLIAMS     |           3 |
+| Myanmar                               | Myingyan                   | 1566 Inegöl Manor                      | BARBARA     | JONES        |           4 |
+| Taiwan                                | Nantou                     | 53 Idfu Parkway                        | ELIZABETH   | BROWN        |           5 |
+| United States                         | Laredo                     | 1795 Santiago de Compostela Way        | JENNIFER    | DAVIS        |           6 |
+| Yugoslavia                            | Kragujevac                 | 900 Santiago de Compostela Parkway     | MARIA       | MILLER       |           7 |
+| New Zealand                           | Hamilton                   | 478 Joliet Way                         | SUSAN       | WILSON       |           8 |
+| Oman                                  | Masqat                     | 613 Korolev Drive                      | MARGARET    | MOORE        |           9 |
+| Iran                                  | Esfahan                    | 1531 Salé Drive                        | DOROTHY     | TAYLOR       |          10 |
+| Japan                                 | Sagamihara                 | 1542 Tarlac Parkway                    | LISA        | ANDERSON     |          11 |
+| India                                 | Yamuna Nagar               | 808 Bhopal Manor                       | NANCY       | THOMAS       |          12 |
+| Turkey                                | Osmaniye                   | 270 Amroha Parkway                     | KAREN       | JACKSON      |          13 |
+| United States                         | Citrus Heights             | 770 Bydgoszcz Avenue                   | BETTY       | WHITE        |          14 |
+| India                                 | Bhopal                     | 419 Iligan Lane                        | HELEN       | HARRIS       |          15 |
+| United Kingdom                        | Southend-on-Sea            | 360 Toulouse Parkway                   | SANDRA      | MARTIN       |          16 |
+| Russian Federation                    | Elista                     | 270 Toulon Boulevard                   | DONNA       | THOMPSON     |          17 |
+| Nigeria                               | Kaduna                     | 320 Brest Avenue                       | CAROL       | GARCIA       |          18 |
+| South Africa                          | Kimberley                  | 1417 Lancaster Avenue                  | RUTH        | MARTINEZ     |          19 |
+| Pakistan                              | Mardan                     | 1688 Okara Way                         | SHARON      | ROBINSON     |          20 |
+| Bangladesh                            | Tangail                    | 262 A Coruña (La Coruña) Parkway       | MICHELLE    | CLARK        |          21 |
+| Morocco                               | Salé                       | 28 Charlotte Amalie Street             | LAURA       | RODRIGUEZ    |          22 |
+| Latvia                                | Liepaja                    | 1780 Hino Boulevard                    | SARAH       | LEWIS        |          23 |
+| Argentina                             | Córdoba                    | 96 Tafuna Way                          | KIMBERLY    | LEE          |          24 |
+| Pakistan                              | Shikarpur                  | 934 San Felipe de Puerto Plata Street  | DEBORAH     | WALKER       |          25 |
+| Holy See (Vatican City State)         | Città del Vaticano         | 18 Duisburg Boulevard                  | JESSICA     | HALL         |          26 |
+| Philippines                           | Davao                      | 217 Botshabelo Place                   | SHIRLEY     | ALLEN        |          27 |
+| India                                 | Munger (Monghyr)           | 1425 Shikarpur Manor                   | CYNTHIA     | YOUNG        |          28 |
+| Japan                                 | Shimonoseki                | 786 Aurora Avenue                      | ANGELA      | HERNANDEZ    |          29 |
+| Taiwan                                | Lungtan                    | 1668 Anápolis Street                   | MELISSA     | KING         |          30 |
+| India                                 | Kamarhati                  | 33 Gorontalo Way                       | BRENDA      | WRIGHT       |          31 |
+| India                                 | Jhansi                     | 176 Mandaluyong Place                  | AMY         | LOPEZ        |          32 |
+| Italy                                 | Alessandria                | 127 Purnea (Purnia) Manor              | ANNA        | HILL         |          33 |
+| Japan                                 | Kurashiki                  | 61 Tama Street                         | REBECCA     | SCOTT        |          34 |
+| France                                | Toulouse                   | 391 Callao Drive                       | VIRGINIA    | GREEN        |          35 |
+| Iran                                  | Arak                       | 334 Munger (Monghyr) Lane              | KATHLEEN    | ADAMS        |          36 |
+| China                                 | Nanyang                    | 1440 Fukuyama Loop                     | PAMELA      | BAKER        |          37 |
+| Moldova                               | Chisinau                   | 269 Cam Ranh Parkway                   | MARTHA      | GONZALEZ     |          38 |
+| Brazil                                | Vila Velha                 | 306 Antofagasta Place                  | DEBRA       | NELSON       |          39 |
+| Morocco                               | Nador                      | 671 Graz Street                        | AMANDA      | CARTER       |          40 |
+| Armenia                               | Yerevan                    | 42 Brindisi Place                      | STEPHANIE   | MITCHELL     |          41 |
+| Thailand                              | Pak Kret                   | 1632 Bislig Avenue                     | CAROLYN     | PEREZ        |          42 |
+| French Polynesia                      | Faaa                       | 1447 Imus Way                          | CHRISTINE   | ROBERTS      |          43 |
+| Russian Federation                    | Lipetsk                    | 1998 Halifax Drive                     | MARIE       | TURNER       |          44 |
+| Chile                                 | Antofagasta                | 1718 Valencia Street                   | JANET       | PHILLIPS     |          45 |
+| Russian Federation                    | Moscow                     | 46 Pjatigorsk Lane                     | CATHERINE   | CAMPBELL     |          46 |
+| Brazil                                | Juazeiro do Norte          | 686 Garland Manor                      | FRANCES     | PARKER       |          47 |
+| Russian Federation                    | Niznekamsk                 | 909 Garland Manor                      | ANN         | EVANS        |          48 |
+| Saudi Arabia                          | Jedda                      | 725 Isesaki Place                      | JOYCE       | EDWARDS      |          49 |
+| Sudan                                 | Omdurman                   | 115 Hidalgo Parkway                    | DIANE       | COLLINS      |          50 |
+| United States                         | Fontana                    | 1135 Izumisano Parkway                 | ALICE       | STEWART      |          51 |
+| Spain                                 | A Coruña (La Coruña)       | 939 Probolinggo Loop                   | JULIE       | SANCHEZ      |          52 |
+| Japan                                 | Nagareyama                 | 17 Kabul Boulevard                     | HEATHER     | MORRIS       |          53 |
+| Japan                                 | Iwakuni                    | 1964 Allappuzha (Alleppey) Street      | TERESA      | ROGERS       |          54 |
+| Russian Federation                    | Balašiha                   | 1697 Kowloon and New Kowloon Loop      | DORIS       | REED         |          55 |
+| French Polynesia                      | Papeete                    | 1668 Saint Louis Place                 | GLORIA      | COOK         |          56 |
+| Liechtenstein                         | Vaduz                      | 943 Tokat Street                       | EVELYN      | MORGAN       |          57 |
+| Malaysia                              | Kuching                    | 1114 Liepaja Street                    | JEAN        | BELL         |          58 |
+| India                                 | Mysore                     | 1213 Ranchi Parkway                    | CHERYL      | MURPHY       |          59 |
+| India                                 | Jaipur                     | 81 Hodeida Way                         | MILDRED     | BAILEY       |          60 |
+| Switzerland                           | Basel                      | 915 Ponce Place                        | KATHERINE   | RIVERA       |          61 |
+| United States                         | Saint Louis                | 1717 Guadalajara Lane                  | JOAN        | COOPER       |          62 |
+| United States                         | Lincoln                    | 1214 Hanoi Way                         | ASHLEY      | RICHARDSON   |          63 |
+| China                                 | Daxian                     | 1966 Amroha Avenue                     | JUDITH      | COX          |          64 |
+| French Guiana                         | Cayenne                    | 698 Otsu Street                        | ROSE        | HOWARD       |          65 |
+| Sweden                                | Malmö                      | 1150 Kimchon Manor                     | JANICE      | WARD         |          66 |
+| China                                 | Xi´angtan                  | 1586 Guarujá Place                     | KELLY       | TORRES       |          67 |
+| India                                 | Shivapuri                  | 57 Arlington Manor                     | NICOLE      | PETERSON     |          68 |
+| Algeria                               | Béchar                     | 1031 Daugavpils Parkway                | JUDY        | GRAY         |          69 |
+| Saudi Arabia                          | al-Hawiya                  | 1124 Buenaventura Drive                | CHRISTINA   | RAMIREZ      |          70 |
+| Philippines                           | Baybay                     | 492 Cam Ranh Street                    | KATHY       | JAMES        |          71 |
+| Philippines                           | Taguig                     | 89 Allappuzha (Alleppey) Manor         | THERESA     | WATSON       |          72 |
+| Taiwan                                | Chiayi                     | 1947 Poços de Caldas Boulevard         | BEVERLY     | BROOKS       |          73 |
+| Brazil                                | Rio Claro                  | 1206 Dos Quebradas Place               | DENISE      | KELLY        |          74 |
+| Taiwan                                | Changhwa                   | 1551 Rampur Lane                       | TAMMY       | SANDERS      |          75 |
+| Kazakstan                             | Pavlodar                   | 602 Paarl Street                       | IRENE       | PRICE        |          76 |
+| Brazil                                | Araçatuba                  | 1692 Ede Loop                          | JANE        | BENNETT      |          77 |
+| India                                 | Rae Bareli                 | 936 Salzburg Lane                      | LORI        | WOOD         |          78 |
+| Japan                                 | Kamakura                   | 586 Tete Way                           | RACHEL      | BARNES       |          79 |
+| Nigeria                               | Ife                        | 1888 Kabul Drive                       | MARILYN     | ROSS         |          80 |
+| Madagascar                            | Mahajanga                  | 320 Baiyin Parkway                     | ANDREA      | HENDERSON    |          81 |
+| Ukraine                               | Simferopol                 | 927 Bahía Blanca Parkway               | KATHRYN     | COLEMAN      |          82 |
+| South Africa                          | Springs                    | 929 Tallahassee Loop                   | LOUISE      | JENKINS      |          83 |
+| Mexico                                | Atlixco                    | 125 Città del Vaticano Boulevard       | SARA        | PERRY        |          84 |
+| United Kingdom                        | Bradford                   | 1557 Kütahya Boulevard                 | ANNE        | POWELL       |          85 |
+| Thailand                              | Songkhla                   | 870 Ashqelon Loop                      | JACQUELINE  | LONG         |          86 |
+| Colombia                              | Sincelejo                  | 1740 Portoviejo Avenue                 | WANDA       | PATTERSON    |          87 |
+| South Korea                           | Cheju                      | 1942 Ciparay Parkway                   | BONNIE      | HUGHES       |          88 |
+| Argentina                             | La Plata                   | 1926 El Alto Avenue                    | JULIA       | FLORES       |          89 |
+| China                                 | Meixian                    | 1952 Chatsworth Drive                  | RUBY        | WASHINGTON   |          90 |
+| Brunei                                | Bandar Seri Begawan        | 1370 Le Mans Avenue                    | LOIS        | BUTLER       |          91 |
+| Brazil                                | Goiânia                    | 984 Effon-Alaiye Avenue                | TINA        | SIMMONS      |          92 |
+| China                                 | Zalantun                   | 832 Nakhon Sawan Manor                 | PHYLLIS     | FOSTER       |          93 |
+| Philippines                           | Bislig                     | 152 Kitwe Parkway                      | NORMA       | GONZALES     |          94 |
+| India                                 | Pathankot                  | 1697 Tanauan Lane                      | PAULA       | BRYANT       |          95 |
+| United States                         | Augusta-Richmond County    | 1308 Arecibo Way                       | DIANA       | ALEXANDER    |          96 |
+| Mozambique                            | Tete                       | 1599 Plock Drive                       | ANNIE       | RUSSELL      |          97 |
+| United Arab Emirates                  | al-Ayn                     | 669 Firozabad Loop                     | LILLIAN     | GRIFFIN      |          98 |
+| South Korea                           | Kimchon                    | 588 Vila Velha Manor                   | EMILY       | DIAZ         |          99 |
+| Russian Federation                    | Jelets                     | 1913 Kamakura Place                    | ROBIN       | HAYES        |         100 |
+| Saudi Arabia                          | Abha                       | 733 Mandaluyong Place                  | PEGGY       | MYERS        |         101 |
+| Israel                                | Ashdod                     | 659 Vaduz Drive                        | CRYSTAL     | FORD         |         102 |
+| Nigeria                               | Ilorin                     | 1177 Jelets Way                        | GLADYS      | HAMILTON     |         103 |
+| France                                | Toulon                     | 1386 Yangor Avenue                     | RITA        | GRAHAM       |         104 |
+| Tuvalu                                | Funafuti                   | 454 Nakhon Sawan Boulevard             | DAWN        | SULLIVAN     |         105 |
+| Russian Federation                    | Ivanovo                    | 1867 San Juan Bautista Tuxtepec Avenue | CONNIE      | WALLACE      |         106 |
+| Argentina                             | Merlo                      | 1532 Dzerzinsk Way                     | FLORENCE    | WOODS        |         107 |
+| Mexico                                | Huixquilucan               | 1002 Ahmadnagar Manor                  | TRACY       | COLE         |         108 |
+| South Africa                          | Klerksdorp                 | 682 Junan Way                          | EDNA        | WEST         |         109 |
+| China                                 | Enshi                      | 804 Elista Drive                       | TIFFANY     | JORDAN       |         110 |
+| Venezuela                             | Caracas                    | 1378 Alvorada Avenue                   | CARMEN      | OWENS        |         111 |
+| United States                         | Lancaster                  | 793 Cam Ranh Avenue                    | ROSA        | REYNOLDS     |         112 |
+| Venezuela                             | Cumaná                     | 1079 Tel Aviv-Jaffa Boulevard          | CINDY       | FISHER       |         113 |
+| Germany                               | Duisburg                   | 442 Rae Bareli Place                   | GRACE       | ELLIS        |         114 |
+| Mexico                                | Nezahualcóyotl             | 1107 Nakhon Sawan Avenue               | WENDY       | HARRISON     |         115 |
+| Indonesia                             | Pemalang                   | 544 Malmö Parkway                      | VICTORIA    | GIBSON       |         116 |
+| India                                 | Gandhinagar                | 1967 Sincelejo Place                   | EDITH       | MCDONALD     |         117 |
+| United States                         | Grand Prairie              | 333 Goiânia Way                        | KIM         | CRUZ         |         118 |
+| Egypt                                 | Shubra al-Khayma           | 1987 Coacalco de Berriozábal Loop      | SHERRY      | MARSHALL     |         119 |
+| Colombia                              | Dos Quebradas              | 241 Mosul Lane                         | SYLVIA      | ORTIZ        |         120 |
+| India                                 | Etawah                     | 211 Chiayi Drive                       | JOSEPHINE   | GOMEZ        |         121 |
+| Peru                                  | Lima                       | 1175 Tanauan Way                       | THELMA      | MURRAY       |         122 |
+| India                                 | Varanasi (Benares)         | 117 Boa Vista Way                      | SHANNON     | FREEMAN      |         123 |
+| Turkey                                | Kütahya                    | 848 Tafuna Manor                       | SHEILA      | WELLS        |         124 |
+| South Africa                          | Boksburg                   | 569 Baicheng Lane                      | ETHEL       | WEBB         |         125 |
+| Brazil                                | Poá                        | 1666 Qomsheh Drive                     | ELLEN       | SIMPSON      |         126 |
+| Russian Federation                    | Smolensk                   | 801 Hagonoy Drive                      | ELAINE      | STEVENS      |         127 |
+| Poland                                | Jastrzebie-Zdrój           | 1050 Garden Grove Avenue               | MARJORIE    | TUCKER       |         128 |
+| China                                 | Liaocheng                  | 1854 Tieli Street                      | CARRIE      | PORTER       |         129 |
+| Brazil                                | Águas Lindas de Goiás      | 758 Junan Lane                         | CHARLOTTE   | HUNTER       |         130 |
+| Ukraine                               | Mukatševe                  | 1752 São Leopoldo Parkway              | MONICA      | HICKS        |         131 |
+| South Africa                          | Botshabelo                 | 898 Belém Manor                        | ESTHER      | CRAWFORD     |         132 |
+| Mexico                                | Torreón                    | 261 Saint Louis Way                    | PAULINE     | HENRY        |         133 |
+| Egypt                                 | Qalyub                     | 765 Southampton Drive                  | EMMA        | BOYD         |         134 |
+| India                                 | Pune                       | 943 Johannesburg Avenue                | JUANITA     | MASON        |         135 |
+| India                                 | Hubli-Dharwad              | 788 Atšinsk Street                     | ANITA       | MORALES      |         136 |
+| Netherlands                           | Apeldoorn                  | 1749 Daxian Place                      | RHONDA      | KENNEDY      |         137 |
+| China                                 | Hohhot                     | 1587 Sullana Lane                      | HAZEL       | WARREN       |         138 |
+| Taiwan                                | Touliu                     | 1029 Dzerzinsk Manor                   | AMBER       | DIXON        |         139 |
+| United States                         | Clarksville                | 1666 Beni-Mellal Place                 | EVA         | RAMOS        |         140 |
+| Japan                                 | Fukuyama                   | 928 Jaffna Loop                        | DEBBIE      | REYES        |         141 |
+| United Kingdom                        | Dundee                     | 483 Ljubertsy Parkway                  | APRIL       | BURNS        |         142 |
+| Turkey                                | Kilis                      | 374 Bat Yam Boulevard                  | LESLIE      | GORDON       |         143 |
+| Belarus                               | Molodetšno                 | 1027 Songkhla Manor                    | CLARA       | SHAW         |         144 |
+| South Africa                          | Soshanguve                 | 999 Sanaa Loop                         | LUCILLE     | HOLMES       |         145 |
+| United States                         | Sterling Heights           | 879 Newcastle Way                      | JAMIE       | RICE         |         146 |
+| Japan                                 | Urawa                      | 1337 Lincoln Parkway                   | JOANNE      | ROBERTSON    |         147 |
+| Réunion                               | Saint-Denis                | 1952 Pune Lane                         | ELEANOR     | HUNT         |         148 |
+| United States                         | Brockton                   | 782 Mosul Street                       | VALERIE     | BLACK        |         149 |
+| Mexico                                | Hidalgo                    | 781 Shimonoseki Drive                  | DANIELLE    | DANIELS      |         150 |
+| China                                 | Laiwu                      | 1560 Jelets Boulevard                  | MEGAN       | PALMER       |         151 |
+| India                                 | Nagaon                     | 1963 Moscow Place                      | ALICIA      | MILLS        |         152 |
+| Indonesia                             | Jakarta                    | 456 Escobar Way                        | SUZANNE     | NICHOLS      |         153 |
+| China                                 | Yuncheng                   | 798 Cianjur Avenue                     | MICHELE     | GRANT        |         154 |
+| Switzerland                           | Bern                       | 185 Novi Sad Place                     | GAIL        | KNIGHT       |         155 |
+| Nigeria                               | Ondo                       | 1367 Yantai Manor                      | BERTHA      | FERGUSON     |         156 |
+| North Korea                           | Pyongyang                  | 1386 Nakhon Sawan Boulevard            | DARLENE     | ROSE         |         157 |
+| United States                         | Greensboro                 | 369 Papeete Way                        | VERONICA    | STONE        |         158 |
+| Austria                               | Linz                       | 1440 Compton Place                     | JILL        | HAWKINS      |         159 |
+| Russian Federation                    | Ljubertsy                  | 1623 Bahía Blanca Manor                | ERIN        | DUNN         |         160 |
+| Israel                                | Tel Aviv-Jaffa             | 97 Shimoga Avenue                      | GERALDINE   | PERKINS      |         161 |
+| France                                | Le Mans                    | 1740 Le Mans Loop                      | LAUREN      | HUDSON       |         162 |
+| Japan                                 | Kakamigahara               | 1287 Xi´angfan Boulevard               | CATHY       | SPENCER      |         163 |
+| Turkey                                | Tarsus                     | 842 Salzburg Lane                      | JOANN       | GARDNER      |         164 |
+| China                                 | Hami                       | 154 Tallahassee Loop                   | LORRAINE    | STEPHENS     |         165 |
+| Malawi                                | Lilongwe                   | 710 San Felipe del Progreso Avenue     | LYNN        | PAYNE        |         166 |
+| India                                 | Chandrapur                 | 1540 Wroclaw Drive                     | SALLY       | PIERCE       |         167 |
+| China                                 | Jinchang                   | 475 Atšinsk Way                        | REGINA      | BERRY        |         168 |
+| China                                 | Pingxiang                  | 1294 Firozabad Drive                   | ERICA       | MATTHEWS     |         169 |
+| India                                 | Udaipur                    | 1877 Ezhou Lane                        | BEATRICE    | ARNOLD       |         170 |
+| Malaysia                              | Ipoh                       | 316 Uruapan Street                     | DOLORES     | WAGNER       |         171 |
+| Turkey                                | Batman                     | 29 Pyongyang Loop                      | BERNICE     | WILLIS       |         172 |
+| Austria                               | Graz                       | 1010 Klerksdorp Way                    | AUDREY      | RAY          |         173 |
+| Venezuela                             | Ocumare del Tuy            | 1848 Salala Boulevard                  | YVONNE      | WATKINS      |         174 |
+| India                                 | Allappuzha (Alleppey)      | 431 Xi´angtan Avenue                   | ANNETTE     | OLSON        |         175 |
+| Algeria                               | Skikda                     | 757 Rustenburg Avenue                  | JUNE        | CARROLL      |         176 |
+| Mexico                                | Matamoros                  | 146 Johannesburg Way                   | SAMANTHA    | DUNCAN       |         177 |
+| Brazil                                | Santa Bárbara d´Oeste      | 1891 Rizhao Boulevard                  | MARION      | SNYDER       |         178 |
+| Russian Federation                    | Kirovo-Tšepetsk            | 1089 Iwatsuki Avenue                   | DANA        | HART         |         179 |
+| Colombia                              | Pereira                    | 1410 Benin City Parkway                | STACY       | CUNNINGHAM   |         180 |
+| United States                         | Memphis                    | 682 Garden Grove Place                 | ANA         | BRADLEY      |         181 |
+| United States                         | Compton                    | 533 al-Ayn Boulevard                   | RENEE       | LANE         |         182 |
+| Brazil                                | Luziânia                   | 1839 Székesfehérvár Parkway            | IDA         | ANDREWS      |         183 |
+| Netherlands                           | ´s-Hertogenbosch           | 741 Ambattur Manor                     | VIVIAN      | RUIZ         |         184 |
+| Iran                                  | Shahr-e Kord               | 927 Barcelona Street                   | ROBERTA     | HARPER       |         185 |
+| India                                 | Haldia                     | 435 0 Way                              | HOLLY       | FOX          |         186 |
+| Ukraine                               | Sumy                       | 140 Chiayi Parkway                     | BRITTANY    | RILEY        |         187 |
+| Philippines                           | Bayugan                    | 1166 Changhwa Street                   | MELANIE     | ARMSTRONG    |         188 |
+| Canada                                | Oshawa                     | 891 Novi Sad Manor                     | LORETTA     | CARPENTER    |         189 |
+| Tanzania                              | Tabora                     | 605 Rio Claro Parkway                  | YOLANDA     | WEAVER       |         190 |
+| Russian Federation                    | Novotšerkassk              | 1077 San Felipe de Puerto Plata Place  | JEANETTE    | GREENE       |         191 |
+| India                                 | Firozabad                  | 9 San Miguel de Tucumán Manor          | LAURIE      | LAWRENCE     |         192 |
+| Kenya                                 | Kisumu                     | 447 Surakarta Loop                     | KATIE       | ELLIOTT      |         193 |
+| Japan                                 | Hino                       | 345 Oshawa Boulevard                   | KRISTEN     | CHAVEZ       |         194 |
+| Germany                               | Siegen                     | 1792 Valle de la Pascua Place          | VANESSA     | SIMS         |         195 |
+| Germany                               | Mannheim                   | 1074 Binzhou Manor                     | ALMA        | AUSTIN       |         196 |
+| China                                 | Changzhou                  | 817 Bradford Loop                      | SUE         | PETERS       |         197 |
+| Nigeria                               | Ikerre                     | 955 Bamenda Way                        | ELSIE       | KELLEY       |         198 |
+| Vietnam                               | Haiphong                   | 1149 A Coruña (La Coruña) Boulevard    | BETH        | FRANKLIN     |         199 |
+| Turkmenistan                          | Ashgabat                   | 387 Mwene-Ditu Drive                   | JEANNE      | LAWSON       |         200 |
+| Germany                               | Witten                     | 68 Molodetšno Manor                    | VICKI       | FIELDS       |         201 |
+| India                                 | Bhusawal                   | 642 Nador Drive                        | CARLA       | GUTIERREZ    |         202 |
+| Indonesia                             | Gorontalo                  | 1688 Nador Lane                        | TARA        | RYAN         |         203 |
+| Turkey                                | Usak                       | 1215 Pyongyang Parkway                 | ROSEMARY    | SCHMIDT      |         204 |
+| Paraguay                              | Ciudad del Este            | 1679 Antofagasta Street                | EILEEN      | CARR         |         205 |
+| Brazil                                | Blumenau                   | 1304 ´s-Hertogenbosch Way              | TERRI       | VASQUEZ      |         206 |
+| Greenland                             | Nuuk                       | 850 Salala Loop                        | GERTRUDE    | CASTILLO     |         207 |
+| India                                 | Balurghat                  | 624 Oshawa Boulevard                   | LUCY        | WHEELER      |         208 |
+| India                                 | Bhilwara                   | 43 Dadu Avenue                         | TONYA       | CHAPMAN      |         209 |
+| Yemen                                 | Aden                       | 751 Lima Loop                          | ELLA        | OLIVER       |         210 |
+| China                                 | Fuyu                       | 1333 Haldia Street                     | STACEY      | MONTGOMERY   |         211 |
+| United States                         | Bellevue                   | 660 Jedda Boulevard                    | WILMA       | RICHARDS     |         212 |
+| Yemen                                 | Taizz                      | 1001 Miyakonojo Lane                   | GINA        | WILLIAMSON   |         213 |
+| United States                         | Sunnyvale                  | 226 Brest Manor                        | KRISTIN     | JOHNSTON     |         214 |
+| Bulgaria                              | Stara Zagora               | 1229 Valencia Parkway                  | JESSIE      | BANKS        |         215 |
+| Brazil                                | Aparecida de Goiânia       | 1201 Qomsheh Manor                     | NATALIE     | MEYER        |         216 |
+| India                                 | Sambhal                    | 866 Shivapuri Manor                    | AGNES       | BISHOP       |         217 |
+| Afghanistan                           | Kabul                      | 1168 Najafabad Parkway                 | VERA        | MCCOY        |         218 |
+| Argentina                             | Vicente López              | 1244 Allappuzha (Alleppey) Place       | WILLIE      | HOWELL       |         219 |
+| Tanzania                              | Zanzibar                   | 1842 Luziânia Boulevard                | CHARLENE    | ALVAREZ      |         220 |
+| Italy                                 | Syrakusa                   | 1926 Gingoog Street                    | BESSIE      | MORRISON     |         221 |
+| Russian Federation                    | Jaroslavl                  | 810 Palghat (Palakkad) Boulevard       | DELORES     | HANSEN       |         222 |
+| Pakistan                              | Mandi Bahauddin            | 1820 Maringá Parkway                   | MELINDA     | FERNANDEZ    |         223 |
+| India                                 | Jodhpur                    | 60 Poços de Caldas Street              | PEARL       | GARZA        |         224 |
+| India                                 | Ambattur                   | 1014 Loja Manor                        | ARLENE      | HARVEY       |         225 |
+| Paraguay                              | Asunción                   | 201 Effon-Alaiye Way                   | MAUREEN     | LITTLE       |         226 |
+| Germany                               | Saarbrücken                | 430 Alessandria Loop                   | COLLEEN     | BURTON       |         227 |
+| Cambodia                              | Phnom Penh                 | 754 Valencia Place                     | ALLISON     | STANLEY      |         228 |
+| Brazil                                | Anápolis                   | 356 Olomouc Manor                      | TAMARA      | NGUYEN       |         229 |
+| Romania                               | Botosani                   | 1256 Bislig Boulevard                  | JOY         | GEORGE       |         230 |
+| India                                 | Uttarpara-Kotrung          | 954 Kimchon Place                      | GEORGIA     | JACOBS       |         231 |
+| Nigeria                               | Zaria                      | 885 Yingkou Manor                      | CONSTANCE   | REID         |         232 |
+| Egypt                                 | Idfu                       | 1736 Cavite Place                      | LILLIE      | KIM          |         233 |
+| Kuwait                                | Jalib al-Shuyukh           | 346 Skikda Parkway                     | CLAUDIA     | FULLER       |         234 |
+| Colombia                              | Buenaventura               | 98 Stara Zagora Boulevard              | JACKIE      | LYNCH        |         235 |
+| Philippines                           | Tanza                      | 1479 Rustenburg Boulevard              | MARCIA      | DEAN         |         236 |
+| South Korea                           | Naju                       | 647 A Coruña (La Coruña) Street        | TANYA       | GILBERT      |         237 |
+| India                                 | Shimoga                    | 1964 Gijón Manor                       | NELLIE      | GARRETT      |         238 |
+| Indonesia                             | Ciomas                     | 47 Syktyvkar Lane                      | MINNIE      | ROMERO       |         239 |
+| Japan                                 | Iwaki                      | 1148 Saarbrücken Parkway               | MARLENE     | WELCH        |         240 |
+| China                                 | Xi´angfan                  | 1103 Bilbays Parkway                   | HEIDI       | LARSON       |         241 |
+| China                                 | Qinhuangdao                | 1246 Boksburg Parkway                  | GLENDA      | FRAZIER      |         242 |
+| Argentina                             | San Miguel de Tucumán      | 1483 Pathankot Street                  | LYDIA       | BURKE        |         243 |
+| Philippines                           | Lapu-Lapu                  | 582 Papeete Loop                       | VIOLA       | HANSON       |         244 |
+| South Korea                           | Uijongbu                   | 300 Junan Street                       | COURTNEY    | DAY          |         245 |
+| Brazil                                | Maringá                    | 829 Grand Prairie Way                  | MARIAN      | MENDOZA      |         246 |
+| Mexico                                | Coacalco de Berriozábal    | 1473 Changhwa Parkway                  | STELLA      | MORENO       |         247 |
+| United States                         | Tallahassee                | 1309 Weifang Street                    | CAROLINE    | BOWMAN       |         248 |
+| China                                 | Tianjin                    | 1760 Oshawa Manor                      | DORA        | MEDINA       |         249 |
+| Nigeria                               | Oyo                        | 786 Stara Zagora Way                   | JO          | FOWLER       |         250 |
+| Germany                               | Halle/Saale                | 1966 Tonghae Street                    | VICKIE      | BREWER       |         251 |
+| United Kingdom                        | London                     | 1497 Yuzhou Drive                      | MATTIE      | HOFFMAN      |         252 |
+| Japan                                 | Miyakonojo                 | 752 Ondo Loop                          | TERRY       | CARLSON      |         253 |
+| Brazil                                | Poços de Caldas            | 1338 Zalantun Lane                     | MAXINE      | SILVA        |         254 |
+| Philippines                           | Hagonoy                    | 127 Iwakuni Boulevard                  | IRMA        | PEARSON      |         255 |
+| Myanmar                               | Monywa                     | 51 Laredo Avenue                       | MABEL       | HOLLAND      |         256 |
+| Mozambique                            | Beira                      | 771 Yaoundé Manor                      | MARSHA      | DOUGLAS      |         257 |
+| Dominican Republic                    | Santiago de los Caballeros | 532 Toulon Street                      | MYRTLE      | FLEMING      |         258 |
+| India                                 | Halisahar                  | 1027 Banjul Place                      | LENA        | JENSEN       |         259 |
+| China                                 | Datong                     | 1158 Mandi Bahauddin Parkway           | CHRISTY     | VARGAS       |         260 |
+| Philippines                           | Tuguegarao                 | 862 Xintai Lane                        | DEANNA      | BYRD         |         261 |
+| Ecuador                               | Portoviejo                 | 816 Cayenne Parkway                    | PATSY       | DAVIDSON     |         262 |
+| Philippines                           | Mandaluyong                | 1831 Nam Dinh Loop                     | HILDA       | HOPKINS      |         263 |
+| Japan                                 | Higashiosaka               | 446 Kirovo-Tšepetsk Lane               | GWENDOLYN   | MAY          |         264 |
+| Czech Republic                        | Olomouc                    | 682 Halisahar Place                    | JENNIE      | TERRY        |         265 |
+| Austria                               | Salzburg                   | 1587 Loja Manor                        | NORA        | HERRERA      |         266 |
+| China                                 | Lengshuijiang              | 1762 Paarl Parkway                     | MARGIE      | WADE         |         267 |
+| India                                 | Palghat (Palakkad)         | 1519 Ilorin Place                      | NINA        | SOTO         |         268 |
+| United States                         | Salinas                    | 920 Kumbakonam Loop                    | CASSANDRA   | WALTERS      |         269 |
+| Poland                                | Kalisz                     | 906 Goiânia Way                        | LEAH        | CURTIS       |         270 |
+| India                                 | Kumbakonam                 | 1675 Xi´angfan Manor                   | PENNY       | NEAL         |         271 |
+| China                                 | Yantai                     | 85 San Felipe de Puerto Plata Drive    | KAY         | CALDWELL     |         272 |
+| Mexico                                | Salamanca                  | 144 South Hill Loop                    | PRISCILLA   | LOWE         |         273 |
+| India                                 | Karnal                     | 1884 Shikarpur Avenue                  | NAOMI       | JENNINGS     |         274 |
+| United States                         | Peoria                     | 1980 Kamjanets-Podilskyi Street        | CAROLE      | BARNETT      |         275 |
+| United States                         | Warren                     | 1944 Bamenda Way                       | BRANDY      | GRAVES       |         276 |
+| Nigeria                               | Ogbomosho                  | 556 Baybay Manor                       | OLGA        | JIMENEZ      |         277 |
+| Turkey                                | Inegöl                     | 457 Tongliao Loop                      | BILLIE      | HORTON       |         278 |
+| Iran                                  | Tabriz                     | 600 Bradford Street                    | DIANNE      | SHELTON      |         279 |
+| Nigeria                               | Owo                        | 1006 Santa Bárbara d´Oeste Manor       | TRACEY      | BARRETT      |         280 |
+| China                                 | Fuzhou                     | 1308 Sumy Loop                         | LEONA       | OBRIEN       |         281 |
+| Puerto Rico                           | Ponce                      | 1405 Chisinau Place                    | JENNY       | CASTRO       |         282 |
+| China                                 | Korla                      | 226 Halifax Street                     | FELICIA     | SUTTON       |         283 |
+| Nigeria                               | Benin City                 | 1279 Udine Parkway                     | SONIA       | GREGORY      |         284 |
+| Japan                                 | Otsu                       | 1336 Benin City Drive                  | MIRIAM      | MCKINNEY     |         285 |
+| Nigeria                               | Effon-Alaiye               | 1155 Liaocheng Place                   | VELMA       | LUCAS        |         286 |
+| India                                 | Tambaram                   | 1993 Tabuk Lane                        | BECKY       | MILES        |         287 |
+| Mexico                                | Valle de Santiago          | 86 Higashiosaka Lane                   | BOBBIE      | CRAIG        |         288 |
+| Hong Kong                             | Kowloon and New Kowloon    | 1912 Allende Manor                     | VIOLET      | RODRIQUEZ    |         289 |
+| Venezuela                             | Valle de la Pascua         | 544 Tarsus Boulevard                   | KRISTINA    | CHAMBERS     |         290 |
+| United States                         | Roanoke                    | 1936 Cumaná Avenue                     | TONI        | HOLT         |         291 |
+| United Arab Emirates                  | Sharja                     | 1192 Tongliao Street                   | MISTY       | LAMBERT      |         292 |
+| Spain                                 | Donostia-San Sebastián     | 44 Najafabad Way                       | MAE         | FLETCHER     |         293 |
+| United States                         | Dayton                     | 32 Pudukkottai Lane                    | SHELLY      | WATTS        |         294 |
+| Russian Federation                    | Kolpino                    | 661 Chisinau Lane                      | DAISY       | BATES        |         295 |
+| India                                 | Patiala                    | 951 Stara Zagora Manor                 | RAMONA      | HALE         |         296 |
+| India                                 | Ahmadnagar                 | 922 Vila Velha Loop                    | SHERRI      | RHODES       |         297 |
+| Finland                               | Oulu                       | 898 Jining Lane                        | ERIKA       | PENA         |         298 |
+| Japan                                 | Hiroshima                  | 1635 Kuwana Boulevard                  | JAMES       | GANNON       |         299 |
+| India                                 | Parbhani                   | 41 El Alto Parkway                     | JOHN        | FARNSWORTH   |         300 |
+| Russian Federation                    | Kaliningrad                | 1883 Maikop Lane                       | ROBERT      | BAUGHMAN     |         301 |
+| China                                 | Tiefa                      | 1908 Gaziantep Place                   | MICHAEL     | SILVERMAN    |         302 |
+| Yemen                                 | Sanaa                      | 687 Alessandria Parkway                | WILLIAM     | SATTERFIELD  |         303 |
+| Peru                                  | Callao                     | 827 Yuncheng Drive                     | DAVID       | ROYAL        |         304 |
+| United States                         | Arlington                  | 913 Coacalco de Berriozábal Loop       | RICHARD     | MCCRARY      |         305 |
+| Malaysia                              | Sungai Petani              | 715 São Bernardo do Campo Lane         | CHARLES     | KOWALSKI     |         306 |
+| Brazil                                | Angra dos Reis             | 1354 Siegen Street                     | JOSEPH      | JOY          |         307 |
+| United States                         | Kansas City                | 1191 Sungai Petani Boulevard           | THOMAS      | GRIGSBY      |         308 |
+| Italy                                 | Brescia                    | 1224 Huejutla de Reyes Boulevard       | CHRISTOPHER | GRECO        |         309 |
+| Brazil                                | Ibirité                    | 543 Bergamo Avenue                     | DANIEL      | CABRAL       |         310 |
+| Russian Federation                    | Kursk                      | 746 Joliet Lane                        | PAUL        | TROUT        |         311 |
+| Saudi Arabia                          | Tabuk                      | 780 Kimberley Way                      | MARK        | RINEHART     |         312 |
+| China                                 | Ezhou                      | 1774 Yaoundé Place                     | DONALD      | MAHON        |         313 |
+| Brazil                                | Sorocaba                   | 1957 Yantai Lane                       | GEORGE      | LINTON       |         314 |
+| Israel                                | Bat Yam                    | 1542 Lubumbashi Boulevard              | KENNETH     | GOODEN       |         315 |
+| India                                 | Miraj                      | 651 Pathankot Loop                     | STEVEN      | CURLEY       |         316 |
+| Faroe Islands                         | Tórshavn                   | 1359 Zhoushan Parkway                  | EDWARD      | BAUGH        |         317 |
+| Poland                                | Bydgoszcz                  | 1769 Iwaki Lane                        | BRIAN       | WYMAN        |         318 |
+| Mexico                                | San Felipe del Progreso    | 1145 Vilnius Manor                     | RONALD      | WEINER       |         319 |
+| American Samoa                        | Tafuna                     | 1892 Nabereznyje Tšelny Lane           | ANTHONY     | SCHWAB       |         320 |
+| Nepal                                 | Birgunj                    | 470 Boksburg Street                    | KEVIN       | SCHULER      |         321 |
+| Argentina                             | Bahía Blanca               | 1427 A Coruña (La Coruña) Place        | JASON       | MORRISSEY    |         322 |
+| Mexico                                | Cuautla                    | 479 San Felipe del Progreso Avenue     | MATTHEW     | MAHAN        |         323 |
+| China                                 | Yuzhou                     | 867 Benin City Avenue                  | GARY        | COY          |         324 |
+| Brazil                                | Brasília                   | 981 Kumbakonam Place                   | TIMOTHY     | BUNN         |         325 |
+| Saint Vincent and the Grenadines      | Kingstown                  | 1016 Iwakuni Street                    | JOSE        | ANDREW       |         326 |
+| Turkey                                | Adana                      | 663 Bahía Blanca Parkway               | LARRY       | THRASHER     |         327 |
+| Indonesia                             | Ciparay                    | 1860 Taguig Loop                       | JEFFREY     | SPEAR        |         328 |
+| Bangladesh                            | Jamalpur                   | 1816 Bydgoszcz Loop                    | FRANK       | WAGGONER     |         329 |
+| United States                         | Aurora                     | 587 Benguela Manor                     | SCOTT       | SHELLEY      |         330 |
+| Argentina                             | Santa Fé                   | 430 Kumbakonam Drive                   | ERIC        | ROBERT       |         331 |
+| Bangladesh                            | Dhaka                      | 1838 Tabriz Lane                       | STEPHEN     | QUALLS       |         332 |
+| Azerbaijan                            | Baku                       | 431 Székesfehérvár Avenue              | ANDREW      | PURDY        |         333 |
+| Azerbaijan                            | Sumqayit                   | 503 Sogamoso Loop                      | RAYMOND     | MCWHORTER    |         334 |
+| Tunisia                               | Sousse                     | 507 Smolensk Loop                      | GREGORY     | MAULDIN      |         335 |
+| India                                 | Rampur                     | 1920 Weifang Avenue                    | JOSHUA      | MARK         |         336 |
+| Japan                                 | Onomichi                   | 124 al-Manama Way                      | JERRY       | JORDON       |         337 |
+| South Africa                          | Paarl                      | 1443 Mardan Street                     | DENNIS      | GILMAN       |         338 |
+| China                                 | Xinxiang                   | 1909 Benguela Lane                     | WALTER      | PERRYMAN     |         339 |
+| Vietnam                               | Hanoi                      | 68 Ponce Parkway                       | PATRICK     | NEWSOM       |         340 |
+| Netherlands                           | Ede                        | 1217 Konotop Avenue                    | PETER       | MENARD       |         341 |
+| Brazil                                | Boa Vista                  | 1293 Nam Dinh Way                      | HAROLD      | MARTINO      |         342 |
+| Mexico                                | Mexicali                   | 785 Vaduz Street                       | DOUGLAS     | GRAF         |         343 |
+| Tonga                                 | Nuku´alofa                 | 1516 Escobar Drive                     | HENRY       | BILLINGSLEY  |         344 |
+| Paraguay                              | San Lorenzo                | 1628 Nagareyama Lane                   | CARL        | ARTIS        |         345 |
+| Russian Federation                    | Maikop                     | 1157 Nyeri Loop                        | ARTHUR      | SIMPKINS     |         346 |
+| Latvia                                | Daugavpils                 | 1673 Tangail Drive                     | RYAN        | SALISBURY    |         347 |
+| Taiwan                                | Hsichuh                    | 381 Kabul Way                          | ROGER       | QUINTANILLA  |         348 |
+| Philippines                           | Imus                       | 953 Hodeida Street                     | JOE         | GILLILAND    |         349 |
+| Russian Federation                    | Tšeboksary                 | 469 Nakhon Sawan Street                | JUAN        | FRALEY       |         350 |
+| Russian Federation                    | Zeleznogorsk               | 1378 Beira Loop                        | JACK        | FOUST        |         351 |
+| Cameroon                              | Bamenda                    | 1641 Changhwa Place                    | ALBERT      | CROUSE       |         352 |
+| Mexico                                | Pachuca de Soto            | 1698 Southport Loop                    | JONATHAN    | SCARBOROUGH  |         353 |
+| Brazil                                | Santo André                | 519 Nyeri Manor                        | JUSTIN      | NGO          |         354 |
+| Japan                                 | Matsue                     | 619 Huánuco Avenue                     | TERRY       | GRISSOM      |         355 |
+| India                                 | Satna                      | 45 Aparecida de Goiânia Place          | GERALD      | FULTZ        |         356 |
+| Slovakia                              | Bratislava                 | 482 Kowloon and New Kowloon Manor      | KEITH       | RICO         |         357 |
+| India                                 | Ranchi                     | 604 Bern Place                         | SAMUEL      | MARLOW       |         358 |
+| Argentina                             | Almirante Brown            | 1623 Kingstown Drive                   | WILLIE      | MARKHAM      |         359 |
+| Puerto Rico                           | Arecibo                    | 1009 Zanzibar Lane                     | RALPH       | MADRIGAL     |         360 |
+| Cameroon                              | Yaoundé                    | 114 Jalib al-Shuyukh Manor             | LAWRENCE    | LAWTON       |         361 |
+| Brazil                                | Belém                      | 1163 London Parkway                    | NICHOLAS    | BARFIELD     |         362 |
+| Kenya                                 | Nyeri                      | 1658 Jastrzebie-Zdrój Loop             | ROY         | WHITING      |         363 |
+| Mexico                                | Guadalajara                | 817 Laredo Avenue                      | BENJAMIN    | VARNEY       |         364 |
+| Japan                                 | Okinawa                    | 1565 Tangail Manor                     | BRUCE       | SCHWARZ      |         365 |
+| Turkey                                | Balikesir                  | 1912 Emeishan Drive                    | BRANDON     | HUEY         |         366 |
+| India                                 | Adoni                      | 230 Urawa Drive                        | ADAM        | GOOCH        |         367 |
+| Iran                                  | Najafabad                  | 1922 Miraj Way                         | HARRY       | ARCE         |         368 |
+| Mexico                                | Juárez                     | 433 Florencia Street                   | FRED        | WHEAT        |         369 |
+| India                                 | Gulbarga                   | 1049 Matamoros Parkway                 | WAYNE       | TRUONG       |         370 |
+| Philippines                           | Cabuyao                    | 1061 Ede Avenue                        | BILLY       | POULIN       |         371 |
+| Indonesia                             | Probolinggo                | 154 Oshawa Manor                       | STEVE       | MACKENZIE    |         372 |
+| Philippines                           | Tanauan                    | 1191 Tandil Drive                      | LOUIS       | LEONE        |         373 |
+| Brazil                                | Vitória de Santo Antão     | 1133 Rizhao Avenue                     | JEREMY      | HURTADO      |         374 |
+| Congo, The Democratic Republic of the | Mwene-Ditu                 | 1519 Santiago de los Caballeros Loop   | AARON       | SELBY        |         375 |
+| Russian Federation                    | Kurgan                     | 1618 Olomouc Manor                     | RANDY       | GAITHER      |         376 |
+| Iran                                  | Kermanshah                 | 220 Hidalgo Drive                      | HOWARD      | FORTNER      |         377 |
+| China                                 | Shenzhen                   | 686 Donostia-San Sebastián Lane        | EUGENE      | CULPEPPER    |         378 |
+| India                                 | Bhavnagar                  | 97 Mogiljov Lane                       | CARLOS      | COUGHLIN     |         379 |
+| Poland                                | Tychy                      | 1642 Charlotte Amalie Drive            | RUSSELL     | BRINSON      |         380 |
+| Anguilla                              | South Hill                 | 1368 Maracaíbo Boulevard               | BOBBY       | BOUDREAU     |         381 |
+| United States                         | Manchester                 | 401 Sucre Boulevard                    | VICTOR      | BARKLEY      |         382 |
+| Angola                                | Namibe                     | 368 Huánuco Boulevard                  | MARTIN      | BALES        |         383 |
+| China                                 | Huai´an                    | 500 Lincoln Parkway                    | ERNEST      | STEPP        |         384 |
+| Japan                                 | Tama                       | 102 Chapra Drive                       | PHILLIP     | HOLM         |         385 |
+| Ukraine                               | Kamjanets-Podilskyi        | 1793 Meixian Place                     | TODD        | TAN          |         386 |
+| Congo, The Democratic Republic of the | Lubumbashi                 | 514 Ife Way                            | JESSE       | SCHILLING    |         387 |
+| Philippines                           | Cavite                     | 717 Changzhou Lane                     | CRAIG       | MORRELL      |         388 |
+| China                                 | Emeishan                   | 753 Ilorin Avenue                      | ALAN        | KAHN         |         389 |
+| Thailand                              | Nakhon Sawan               | 1337 Mit Ghamr Avenue                  | SHAWN       | HEATON       |         390 |
+| Japan                                 | Izumisano                  | 767 Pyongyang Drive                    | CLARENCE    | GAMEZ        |         391 |
+| Ethiopia                              | Addis Abeba                | 614 Pak Kret Street                    | SEAN        | DOUGLASS     |         392 |
+| Russian Federation                    | Korolev                    | 954 Lapu-Lapu Way                      | PHILIP      | CAUSEY       |         393 |
+| Spain                                 | Gijón                      | 331 Bydgoszcz Parkway                  | CHRIS       | BROTHERS     |         394 |
+| Sudan                                 | al-Qadarif                 | 1152 Citrus Heights Manor              | JOHNNY      | TURPIN       |         395 |
+| Japan                                 | Iwatsuki                   | 168 Cianjur Manor                      | EARL        | SHANKS       |         396 |
+| Russian Federation                    | Atšinsk                    | 616 Hagonoy Avenue                     | JIMMY       | SCHRADER     |         397 |
+| Brazil                                | Bagé                       | 1190 0 Place                           | ANTONIO     | MEEK         |         398 |
+| Pakistan                              | Okara                      | 734 Béchar Place                       | DANNY       | ISOM         |         399 |
+| United States                         | Dallas                     | 530 Lausanne Lane                      | BRYAN       | HARDISON     |         400 |
+| Japan                                 | Koriyama                   | 454 Patiala Lane                       | TONY        | CARRANZA     |         401 |
+| France                                | Brest                      | 1346 Mysore Drive                      | LUIS        | YANEZ        |         402 |
+| India                                 | Valparai                   | 990 Etawah Loop                        | MIKE        | WAY          |         403 |
+| Japan                                 | Omiya                      | 1266 Laredo Parkway                    | STANLEY     | SCROGGINS    |         404 |
+| Argentina                             | Tandil                     | 88 Nagaon Manor                        | LEONARD     | SCHOFIELD    |         405 |
+| Virgin Islands, U.S.                  | Charlotte Amalie           | 264 Bhimavaram Manor                   | NATHAN      | RUNYON       |         406 |
+| South Africa                          | Rustenburg                 | 1639 Saarbrücken Drive                 | DALE        | RATCLIFF     |         407 |
+| Sri Lanka                             | Jaffna                     | 692 Amroha Drive                       | MANUEL      | MURRELL      |         408 |
+| Nigeria                               | Deba Habe                  | 1936 Lapu-Lapu Parkway                 | RODNEY      | MOELLER      |         409 |
+| Canada                                | Richmond Hill              | 432 Garden Grove Street                | CURTIS      | IRBY         |         410 |
+| Indonesia                             | Cianjur                    | 1445 Carmen Parkway                    | NORMAN      | CURRIER      |         411 |
+| India                                 | Hoshiarpur                 | 791 Salinas Street                     | ALLEN       | BUTTERFIELD  |         412 |
+| India                                 | Berhampore (Baharampur)    | 126 Acuña Parkway                      | MARVIN      | YEE          |         413 |
+| Mexico                                | Allende                    | 397 Sunnyvale Avenue                   | VINCENT     | RALSTON      |         414 |
+| Netherlands                           | Amersfoort                 | 992 Klerksdorp Loop                    | GLENN       | PULLEN       |         415 |
+| Pakistan                              | Dadu                       | 966 Arecibo Loop                       | JEFFERY     | PINSON       |         416 |
+| Saudi Arabia                          | al-Qatif                   | 289 Santo André Manor                  | TRAVIS      | ESTEP        |         417 |
+| Dominican Republic                    | San Felipe de Puerto Plata | 437 Chungho Drive                      | JEFF        | EAST         |         418 |
+| India                                 | Katihar                    | 1948 Bayugan Parkway                   | CHAD        | CARBONE      |         419 |
+| United States                         | El Monte                   | 1866 al-Qatif Avenue                   | JACOB       | LANCE        |         420 |
+| India                                 | Pudukkottai                | 1661 Abha Drive                        | LEE         | HAWKS        |         421 |
+| China                                 | Laohekou                   | 1557 Cape Coral Parkway                | MELVIN      | ELLINGTON    |         422 |
+| Egypt                                 | Sawhaj                     | 1727 Matamoros Place                   | ALFRED      | CASILLAS     |         423 |
+| China                                 | Shanwei                    | 1269 Botosani Manor                    | KYLE        | SPURLOCK     |         424 |
+| Mexico                                | San Juan Bautista Tuxtepec | 355 Vitória de Santo Antão Way         | FRANCIS     | SIKES        |         425 |
+| India                                 | Purnea (Purnia)            | 1596 Acuña Parkway                     | BRADLEY     | MOTLEY       |         426 |
+| Brazil                                | Guarujá                    | 259 Ipoh Drive                         | JESUS       | MCCARTNEY    |         427 |
+| Russian Federation                    | Syktyvkar                  | 1823 Hoshiarpur Lane                   | HERBERT     | KRUGER       |         428 |
+| Japan                                 | Tsuyama                    | 1404 Taguig Drive                      | FREDERICK   | ISBELL       |         429 |
+| Russian Federation                    | Dzerzinsk                  | 740 Udaipur Lane                       | RAY         | HOULE        |         430 |
+| Bolivia                               | Sucre                      | 287 Cuautla Boulevard                  | JOEL        | FRANCISCO    |         431 |
+| South Africa                          | Newcastle                  | 1766 Almirante Brown Street            | EDWIN       | BURK         |         432 |
+| Mozambique                            | Naçala-Porto               | 596 Huixquilucan Place                 | DON         | BONE         |         433 |
+| Philippines                           | Ozamis                     | 1351 Aparecida de Goiânia Parkway      | EDDIE       | TOMLIN       |         434 |
+| China                                 | Junan                      | 722 Bradford Lane                      | RICKY       | SHELBY       |         435 |
+| Canada                                | Vancouver                  | 983 Santa Fé Way                       | TROY        | QUIGLEY      |         436 |
+| Dominican Republic                    | La Romana                  | 1245 Ibirité Way                       | RANDALL     | NEUMANN      |         437 |
+| Zambia                                | Kitwe                      | 1836 Korla Parkway                     | BARRY       | LOVELACE     |         438 |
+| Italy                                 | Bergamo                    | 231 Kaliningrad Place                  | ALEXANDER   | FENNELL      |         439 |
+| India                                 | Dhule (Dhulia)             | 495 Bhimavaram Lane                    | BERNARD     | COLBY        |         440 |
+| Algeria                               | Batna                      | 1924 Shimonoseki Drive                 | MARIO       | CHEATHAM     |         441 |
+| China                                 | Tongliao                   | 105 Dzerzinsk Manor                    | LEROY       | BUSTAMANTE   |         442 |
+| Brazil                                | São Leopoldo               | 614 Denizli Parkway                    | FRANCISCO   | SKIDMORE     |         443 |
+| Estonia                               | Tartu                      | 1289 Belém Boulevard                   | MARCUS      | HIDALGO      |         444 |
+| Argentina                             | Escobar                    | 203 Tambaram Street                    | MICHEAL     | FORMAN       |         445 |
+| India                                 | Uluberia                   | 1704 Tambaram Manor                    | THEODORE    | CULP         |         446 |
+| Russian Federation                    | Nabereznyje Tšelny         | 207 Cuernavaca Loop                    | CLIFFORD    | BOWENS       |         447 |
+| Germany                               | Erlangen                   | 319 Springs Loop                       | MIGUEL      | BETANCOURT   |         448 |
+| Iran                                  | Sirjan                     | 956 Nam Dinh Manor                     | OSCAR       | AQUINO       |         449 |
+| Indonesia                             | Surakarta                  | 1947 Paarl Way                         | JAY         | ROBB         |         450 |
+| Mexico                                | El Fuerte                  | 814 Simferopol Loop                    | JIM         | REA          |         451 |
+| United Arab Emirates                  | Abu Dhabi                  | 535 Ahmadnagar Manor                   | TOM         | MILNER       |         452 |
+| Venezuela                             | Maracaíbo                  | 138 Caracas Boulevard                  | CALVIN      | MARTEL       |         453 |
+| Mexico                                | Uruapan                    | 251 Florencia Drive                    | ALEX        | GRESHAM      |         454 |
+| Bolivia                               | El Alto                    | 659 Gatineau Boulevard                 | JON         | WILES        |         455 |
+| Senegal                               | Ziguinchor                 | 1889 Valparai Way                      | RONNIE      | RICKETTS     |         456 |
+| United States                         | Rockford                   | 1485 Bratislava Place                  | BILL        | GAVIN        |         457 |
+| Indonesia                             | Tegal                      | 935 Aden Boulevard                     | LLOYD       | DOWD         |         458 |
+| Iran                                  | Qomsheh                    | 76 Kermanshah Manor                    | TOMMY       | COLLAZO      |         459 |
+| Colombia                              | Florencia                  | 734 Tanshui Avenue                     | LEON        | BOSTIC       |         460 |
+| Philippines                           | Gingoog                    | 118 Jaffna Loop                        | DEREK       | BLAKELY      |         461 |
+| Russian Federation                    | Usolje-Sibirskoje          | 1621 Tongliao Avenue                   | WARREN      | SHERROD      |         462 |
+| Canada                                | Halifax                    | 1844 Usak Avenue                       | DARRELL     | POWER        |         463 |
+| Chile                                 | Rancagua                   | 1872 Toulon Loop                       | JEROME      | KENYON       |         464 |
+| Mexico                                | Zapopan                    | 1088 Ibirité Place                     | FLOYD       | GANDY        |         465 |
+| China                                 | Dongying                   | 1322 Mosul Parkway                     | LEO         | EBERT        |         466 |
+| Mexico                                | Cuauhtémoc                 | 1447 Chatsworth Place                  | ALVIN       | DELOACH      |         467 |
+| India                                 | Bijapur                    | 1257 Guadalajara Street                | TIM         | CARY         |         468 |
+| Spain                                 | Ourense (Orense)           | 1469 Plock Lane                        | WESLEY      | BULL         |         469 |
+| Yemen                                 | Hodeida                    | 434 Ourense (Orense) Manor             | GORDON      | ALLARD       |         470 |
+| South Africa                          | Johannesburg               | 270 Tambaram Parkway                   | DEAN        | SAUER        |         471 |
+| Vietnam                               | Nam Dinh                   | 1786 Salinas Place                     | GREG        | ROBINS       |         472 |
+| Indonesia                             | Lhokseumawe                | 1078 Stara Zagora Drive                | JORGE       | OLIVARES     |         473 |
+| Netherlands                           | Emmen                      | 1854 Okara Boulevard                   | DUSTIN      | GILLETTE     |         474 |
+| Ukraine                               | Šostka                     | 421 Yaoundé Street                     | PEDRO       | CHESTNUT     |         475 |
+| Canada                                | Gatineau                   | 1153 Allende Way                       | DERRICK     | BOURQUE      |         476 |
+| United Kingdom                        | Stockport                  | 808 Naçala-Porto Parkway               | DAN         | PAINE        |         477 |
+| Israel                                | Ashqelon                   | 632 Usolje-Sibirskoje Parkway          | LEWIS       | LYMAN        |         478 |
+| United States                         | Akron                      | 98 Pyongyang Boulevard                 | ZACHARY     | HITE         |         479 |
+| Turkey                                | Gaziantep                  | 984 Novotšerkassk Loop                 | COREY       | HAUSER       |         480 |
+| Tanzania                              | Mwanza                     | 64 Korla Street                        | HERMAN      | DEVORE       |         481 |
+| Mexico                                | Coatzacoalcos              | 1785 São Bernardo do Campo Street      | MAURICE     | CRAWLEY      |         482 |
+| Turkey                                | Denizli                    | 698 Jelets Boulevard                   | VERNON      | CHAPA        |         483 |
+| China                                 | Yinchuan                   | 1297 Alvorada Parkway                  | ROBERTO     | VU           |         484 |
+| China                                 | Shaoguan                   | 1909 Dayton Avenue                     | CLYDE       | TOBIAS       |         485 |
+| Mexico                                | Acuña                      | 1789 Saint-Denis Parkway               | GLEN        | TALBERT      |         486 |
+| Russian Federation                    | Pjatigorsk                 | 185 Mannheim Lane                      | HECTOR      | POINDEXTER   |         487 |
+| Mexico                                | La Paz                     | 184 Mandaluyong Street                 | SHANE       | MILLARD      |         488 |
+| Japan                                 | Okayama                    | 591 Sungai Petani Drive                | RICARDO     | MEADOR       |         489 |
+| Colombia                              | Sogamoso                   | 656 Matamoros Drive                    | SAM         | MCDUFFIE     |         490 |
+| Egypt                                 | Mit Ghamr                  | 775 Šostka Drive                       | RICK        | MATTOX       |         491 |
+| India                                 | Kanchrapara                | 1013 Tabuk Boulevard                   | LESTER      | KRAUS        |         492 |
+| Turkey                                | Sultanbeyli                | 319 Plock Parkway                      | BRENT       | HARKINS      |         493 |
+| Ecuador                               | Ríobamba                   | 1954 Kowloon and New Kowloon Way       | RAMON       | CHOATE       |         494 |
+| China                                 | Baiyin                     | 362 Rajkot Lane                        | CHARLIE     | BESS         |         495 |
+| China                                 | Rizhao                     | 1060 Tandil Lane                       | TYLER       | WREN         |         496 |
+| United Kingdom                        | York                       | 1515 Korla Way                         | GILBERT     | SLEDGE       |         497 |
+| Oman                                  | Salala                     | 1416 San Juan Bautista Tuxtepec Avenue | GENE        | SANBORN      |         498 |
+| Italy                                 | Brindisi                   | 1 Valle de Santiago Avenue             | MARC        | OUTLAW       |         499 |
+| Indonesia                             | Madiun                     | 519 Brescia Parkway                    | REGINALD    | KINDER       |         500 |
+| Poland                                | Lublin                     | 414 Mandaluyong Street                 | RUBEN       | GEARY        |         501 |
+| India                                 | Siliguri (Shiliguri)       | 1197 Sokoto Boulevard                  | BRETT       | CORNWELL     |         502 |
+| Japan                                 | Ueda                       | 496 Celaya Drive                       | ANGEL       | BARCLAY      |         503 |
+| United States                         | Joliet                     | 786 Matsue Way                         | NATHANIEL   | ADAM         |         504 |
+| Philippines                           | Talavera                   | 48 Maracaíbo Place                     | RAFAEL      | ABNEY        |         505 |
+| Indonesia                             | Pontianak                  | 1152 al-Qatif Lane                     | LESLIE      | SEWARD       |         506 |
+| Turkey                                | Eskisehir                  | 1269 Ipoh Avenue                       | EDGAR       | RHOADS       |         507 |
+| India                                 | Vijayawada                 | 758 Korolev Parkway                    | MILTON      | HOWLAND      |         508 |
+| India                                 | Chapra                     | 1747 Rustenburg Place                  | RAUL        | FORTIER      |         509 |
+| Russian Federation                    | Kamyšin                    | 886 Tonghae Place                      | BEN         | EASTER       |         510 |
+| China                                 | Suihua                     | 1574 Goiânia Boulevard                 | CHESTER     | BENNER       |         511 |
+| United Kingdom                        | London                     | 548 Uruapan Street                     | CECIL       | VINES        |         512 |
+| Nauru                                 | Yangor                     | 962 Tama Loop                          | DUANE       | TUBBS        |         513 |
+| China                                 | Zaoyang                    | 1778 Gijón Manor                       | FRANKLIN    | TROUTMAN     |         514 |
+| Chile                                 | Coquimbo                   | 568 Dhule (Dhulia) Loop                | ANDRE       | RAPP         |         515 |
+| Cambodia                              | Battambang                 | 1768 Udine Loop                        | ELMER       | NOE          |         516 |
+| Taiwan                                | Chungho                    | 608 Birgunj Parkway                    | BRAD        | MCCURDY      |         517 |
+| Turkey                                | Sivas                      | 680 A Coruña (La Coruña) Manor         | GABRIEL     | HARDER       |         518 |
+| Japan                                 | Isesaki                    | 1949 Sanya Street                      | RON         | DELUCA       |         519 |
+| Vietnam                               | Nha Trang                  | 617 Klerksdorp Place                   | MITCHELL    | WESTMORELAND |         520 |
+| China                                 | Yingkou                    | 1993 0 Loop                            | ROLAND      | SOUTH        |         521 |
+| Philippines                           | Santa Rosa                 | 1176 Southend-on-Sea Manor             | ARNOLD      | HAVENS       |         522 |
+| Vietnam                               | Vinh                       | 600 Purnea (Purnia) Avenue             | HARVEY      | GUAJARDO     |         523 |
+| Indonesia                             | Purwakarta                 | 1003 Qinhuangdao Street                | JARED       | ELY          |         524 |
+| Italy                                 | Udine                      | 1986 Sivas Place                       | ADRIAN      | CLARY        |         525 |
+| United States                         | Cape Coral                 | 1427 Tabuk Place                       | KARL        | SEAL         |         526 |
+| Belarus                               | Mogiljov                   | 556 Asunción Way                       | CORY        | MEEHAN       |         527 |
+| Angola                                | Benguela                   | 486 Ondo Parkway                       | CLAUDE      | HERZOG       |         528 |
+| India                                 | Bhimavaram                 | 635 Brest Manor                        | ERIK        | GUILLEN      |         529 |
+| Argentina                             | Ezeiza                     | 166 Jinchang Street                    | DARRYL      | ASHCRAFT     |         530 |
+| Japan                                 | Kuwana                     | 958 Sagamihara Lane                    | JAMIE       | WAUGH        |         531 |
+| Vietnam                               | Cam Ranh                   | 1817 Livorno Way                       | NEIL        | RENNER       |         532 |
+| China                                 | Binzhou                    | 1332 Gaziantep Lane                    | JESSIE      | MILAM        |         533 |
+| India                                 | Amroha                     | 949 Allende Lane                       | CHRISTIAN   | JUNG         |         534 |
+| Chad                                  | NDjamna                    | 195 Ilorin Street                      | JAVIER      | ELROD        |         535 |
+| South Korea                           | Tonghae                    | 193 Bhusawal Place                     | FERNANDO    | CHURCHILL    |         536 |
+| United States                         | Aurora                     | 43 Vilnius Manor                       | CLINTON     | BUFORD       |         537 |
+| China                                 | Baicheng                   | 183 Haiphong Street                    | TED         | BREAUX       |         538 |
+| Venezuela                             | Valencia                   | 163 Augusta-Richmond County Loop       | MATHEW      | BOLIN        |         539 |
+| Bulgaria                              | Ruse                       | 191 José Azueta Parkway                | TYRONE      | ASHER        |         540 |
+| Italy                                 | Livorno                    | 379 Lublin Parkway                     | DARREN      | WINDHAM      |         541 |
+| Indonesia                             | Pangkal Pinang             | 1658 Cumaná Loop                       | LONNIE      | TIRADO       |         542 |
+| Morocco                               | Beni-Mellal                | 454 Qinhuangdao Drive                  | LANCE       | PEMBERTON    |         543 |
+| Brazil                                | São Bernardo do Campo      | 1715 Okayama Street                    | CODY        | NOLEN        |         544 |
+| Ukraine                               | Konotop                    | 182 Nuku´alofa Drive                   | JULIO       | NOLAND       |         545 |
+| China                                 | Sanya                      | 390 Wroclaw Way                        | KELLY       | KNOTT        |         546 |
+| Japan                                 | Kanazawa                   | 1421 Quilmes Lane                      | KURT        | EMMONS       |         547 |
+| Philippines                           | Tarlac                     | 947 Tórshavn Place                     | ALLAN       | CORNISH      |         548 |
+| Spain                                 | Santiago de Compostela     | 1764 Jalib al-Shuyukh Parkway          | NELSON      | CHRISTENSON  |         549 |
+| China                                 | Zhoushan                   | 346 Cam Ranh Avenue                    | GUY         | BROWNLEE     |         550 |
+| Brazil                                | Alvorada                   | 1407 Pachuca de Soto Place             | CLAYTON     | BARBEE       |         551 |
+| China                                 | Haining                    | 904 Clarksville Drive                  | HUGH        | WALDROP      |         552 |
+| Yugoslavia                            | Novi Sad                   | 1917 Kumbakonam Parkway                | MAX         | PITT         |         553 |
+| India                                 | Rajkot                     | 1447 Imus Place                        | DWAYNE      | OLVERA       |         554 |
+| South Africa                          | Chatsworth                 | 1497 Fengshan Drive                    | DWIGHT      | LOMBARDI     |         555 |
+| United Kingdom                        | Southport                  | 869 Shikarpur Way                      | ARMANDO     | GRUBER       |         556 |
+| Lithuania                             | Vilnius                    | 1059 Yuncheng Avenue                   | FELIX       | GAFFNEY      |         557 |
+| Poland                                | Wroclaw                    | 505 Madiun Boulevard                   | JIMMIE      | EGGLESTON    |         558 |
+| Egypt                                 | Bilbays                    | 1741 Hoshiarpur Boulevard              | EVERETT     | BANDA        |         559 |
+| Argentina                             | Avellaneda                 | 1229 Varanasi (Benares) Manor          | JORDAN      | ARCHULETA    |         560 |
+| United States                         | Garland                    | 1894 Boa Vista Way                     | IAN         | STILL        |         561 |
+| Nigeria                               | Sokoto                     | 1342 Sharja Way                        | WALLACE     | SLONE        |         562 |
+| Romania                               | Bucuresti                  | 1342 Abha Boulevard                    | KEN         | PREWITT      |         563 |
+| China                                 | Xintai                     | 415 Pune Avenue                        | BOB         | PFEIFFER     |         564 |
+| Peru                                  | Huánuco                    | 1746 Faaa Way                          | JAIME       | NETTLES      |         565 |
+| Turkey                                | Tokat                      | 539 Hami Way                           | CASEY       | MENA         |         566 |
+| Russian Federation                    | Serpuhov                   | 1407 Surakarta Manor                   | ALFREDO     | MCADAMS      |         567 |
+| Venezuela                             | Barcelona                  | 502 Mandi Bahauddin Parkway            | ALBERTO     | HENNING      |         568 |
+| China                                 | Leshan                     | 1052 Pathankot Avenue                  | DAVE        | GARDINER     |         569 |
+| Mexico                                | Monclova                   | 1351 Sousse Lane                       | IVAN        | CROMWELL     |         570 |
+| Poland                                | Plock                      | 1501 Pangkal Pinang Avenue             | JOHNNIE     | CHISHOLM     |         571 |
+| Poland                                | Czestochowa                | 1405 Hagonoy Avenue                    | SIDNEY      | BURLESON     |         572 |
+| Kazakstan                             | Zhezqazghan                | 521 San Juan Bautista Tuxtepec Place   | BYRON       | BOX          |         573 |
+| Japan                                 | Akishima                   | 923 Tangail Boulevard                  | JULIAN      | VEST         |         574 |
+| Mexico                                | Cuernavaca                 | 186 Skikda Lane                        | ISAAC       | OGLESBY      |         575 |
+| Taiwan                                | Fengshan                   | 1568 Celaya Parkway                    | MORRIS      | MCCARTER     |         576 |
+| Taiwan                                | Tanshui                    | 1489 Kakamigahara Lane                 | CLIFTON     | MALCOLM      |         577 |
+| Mexico                                | Carmen                     | 1819 Alessandria Loop                  | WILLARD     | LUMPKIN      |         578 |
+| Iraq                                  | Mosul                      | 1208 Tama Loop                         | DARYL       | LARUE        |         579 |
+| Philippines                           | Iligan                     | 951 Springs Lane                       | ROSS        | GREY         |         580 |
+| Mexico                                | José Azueta                | 760 Miyakonojo Drive                   | VIRGIL      | WOFFORD      |         581 |
+| Mexico                                | Huejutla de Reyes          | 966 Asunción Way                       | ANDY        | VANHORN      |         582 |
+| United Kingdom                        | Southampton                | 1584 Ljubertsy Lane                    | MARSHALL    | THORN        |         583 |
+| Gambia                                | Banjul                     | 247 Jining Parkway                     | SALVADOR    | TEEL         |         584 |
+| Argentina                             | Quilmes                    | 773 Dallas Manor                       | PERRY       | SWAFFORD     |         585 |
+| Taiwan                                | Tsaotun                    | 1923 Stara Zagora Lane                 | KIRK        | STCLAIR      |         586 |
+| Mexico                                | Celaya                     | 1402 Zanzibar Boulevard                | SERGIO      | STANFIELD    |         587 |
+| China                                 | Weifang                    | 1464 Kursk Parkway                     | MARION      | OCAMPO       |         588 |
+| Ecuador                               | Loja                       | 1074 Sanaa Parkway                     | TRACY       | HERRMANN     |         589 |
+| Bahrain                               | al-Manama                  | 1759 Niznekamsk Avenue                 | SETH        | HANNON       |         590 |
+| Brazil                                | Juiz de Fora               | 32 Liaocheng Way                       | KENT        | ARSENAULT    |         591 |
+| Hungary                               | Székesfehérvár             | 42 Fontana Avenue                      | TERRANCE    | ROUSH        |         592 |
+| United States                         | Garden Grove               | 1895 Zhezqazghan Drive                 | RENE        | MCALISTER    |         593 |
+| China                                 | Jining                     | 1837 Kaduna Parkway                    | EDUARDO     | HIATT        |         594 |
+| China                                 | Jinzhou                    | 844 Bucuresti Place                    | TERRENCE    | GUNDERSON    |         595 |
+| Greece                                | Patras                     | 1101 Bucuresti Boulevard               | ENRIQUE     | FORSYTHE     |         596 |
+| Peru                                  | Sullana                    | 1103 Quilmes Boulevard                 | FREDDIE     | DUGGAN       |         597 |
+| Switzerland                           | Lausanne                   | 1331 Usak Boulevard                    | WADE        | DELVALLE     |         598 |
+| China                                 | Tieli                      | 1325 Fukuyama Street                   | AUSTIN      | CINTRON      |         599 |
++---------------------------------------+----------------------------+----------------------------------------+-------------+--------------+-------------+
+
    
  -- Numero de películas de cada rating
 select rating, count(film_id) as cantidad from film group by rating;
@@ -2192,5 +2796,24 @@ select count(f.film_id) as total_películas from film as f join film_actor as fa
 +------------------+
 
     -- Media de duración de las películas cada categoría.
-select rating, avg(length) as cantidad from film as f join film_category as fc on f. group by c.category_id;
-
+select c.name, avg(f.length) as cantidad from film as f join film_category as fc on f.film_id=fc.film_id join category as c on c.category_id=fc.category_id group by c.category_id;
++-------------+----------+
+| name        | cantidad |
++-------------+----------+
+| Action      | 111.6094 |
+| Animation   | 111.0152 |
+| Children    | 109.8000 |
+| Classics    | 111.6667 |
+| Comedy      | 115.8276 |
+| Documentary | 108.7500 |
+| Drama       | 120.8387 |
+| Family      | 114.7826 |
+| Foreign     | 121.6986 |
+| Games       | 127.8361 |
+| Horror      | 112.4821 |
+| Music       | 113.6471 |
+| New         | 111.1270 |
+| Sci-Fi      | 108.1967 |
+| Sports      | 128.2027 |
+| Travel      | 113.3158 |
++-------------+----------+
