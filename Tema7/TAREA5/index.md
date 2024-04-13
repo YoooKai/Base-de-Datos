@@ -108,13 +108,12 @@ SHOW INDEX FROM producto;
 
 - Optimiza la siguiente consulta creando índices cuando sea necesario. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.
 
-  ```sql
-  SELECT *
-  FROM cliente INNER JOIN pedido
-  ON cliente.codigo_cliente = pedido.codigo_cliente
-  WHERE cliente.nombre_cliente LIKE 'A%';
+```sql
+SELECT * FROM cliente INNER JOIN pedido
+ON cliente.codigo_cliente = pedido.codigo_cliente
+WHERE cliente.nombre_cliente LIKE 'A%';
 
-  +----+-------------+---------+------------+------+----------------+----------------+---------+-----------------------------------+------+----------+-------------+
++----+-------------+---------+------------+------+----------------+----------------+---------+-----------------------------------+------+----------+-------------+
 | id | select_type | table   | partitions | type | possible_keys  | key            | key_len | ref                               | rows | filtered | Extra       |
 +----+-------------+---------+------------+------+----------------+----------------+---------+-----------------------------------+------+----------+-------------+
 |  1 | SIMPLE      | cliente | NULL       | ALL  | PRIMARY        | NULL           | NULL    | NULL                              |   36 |    11.11 | Using where |
@@ -125,16 +124,14 @@ SHOW INDEX FROM producto;
 
 CREATE INDEX idx_nombre_cliente ON cliente (nombre_cliente);
 
---Ahora, al lanzar el explain muestra que ahora se está utilizando el índice idx_nombre_cliente en la tabla cliente, mejorando su eficiencia. Además sería mejor si se cambiara el like por una expresión regular si se pudiese para mejorar aun más su eficiencia. (SELECT *
-FROM cliente INNER JOIN pedido
+-- Ahora, al lanzar el explain muestra que ahora se está utilizando el índice idx_nombre_cliente en la tabla cliente, mejorando su eficiencia. Además sería mejor si se cambiara el like por una expresión regular si se pudiese para mejorar aun más su eficiencia.
+(SELECT * FROM cliente INNER JOIN pedido
 ON cliente.codigo_cliente = pedido.codigo_cliente
 WHERE cliente.nombre_cliente regexp 'A$';)
 
-EXPLAIN SELECT *
-FROM cliente INNER JOIN pedido
+EXPLAIN SELECT * FROM cliente INNER JOIN pedido
 ON cliente.codigo_cliente = pedido.codigo_cliente
 WHERE cliente.nombre_cliente LIKE 'A%';
-
 
 +----+-------------+---------+------------+-------+----------------------------+--------------------+---------+-----------------------------------+------+----------+-----------------------+
 | id | select_type | table   | partitions | type  | possible_keys              | key                | key_len | ref                               | rows | filtered | Extra                 |
@@ -143,7 +140,7 @@ WHERE cliente.nombre_cliente LIKE 'A%';
 |  1 | SIMPLE      | pedido  | NULL       | ref   | codigo_cliente             | codigo_cliente     | 4       | jardineria.cliente.codigo_cliente |    6 |   100.00 | NULL                  |
 +----+-------------+---------+------------+-------+----------------------------+--------------------+---------+-----------------------------------+------+----------+-----------------------+
 
-  ```
+```
 
 - ¿Por qué no es posible optimizar el tiempo de ejecución de las siguientes consultas, incluso haciendo uso de índices?
 
@@ -996,9 +993,5 @@ DROP VIEW listado_de_pagos;
 DROP VIEW listado_pedidos_clientes;
 
 ```
->__Nota__: ___Realiza cada una de las acciones e indica la salida de estas___.
-## Referencias
-
-- [Apuntes sobre índices](../../Indices.md).
 
 </div>
