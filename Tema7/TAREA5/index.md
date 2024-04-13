@@ -98,12 +98,12 @@ SHOW INDEX FROM producto;
 +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
   ```
 
-```sql
--- Al comprobar los resultados de EXPLAIN, en ambas consultas se está realizando un escaneo completo de la tabla pago, lo cual quiere decir que no se está aprovechando ningún índice para optimizar la búsqueda.
 
--- Creo que la diferencia más importante está en cómo se filtran las filas. En la primera consulta, todas las filas de la tabla se filtran para seleccionar solo aquellas donde el año de la fecha de pago sea 2008. Sin embargo, en la segunda consulta, se aplica un filtro sobre un rango de fechas específico dentro del año 2008, así que considero que esta, al ser más concreta, podría ser más eficiente en cuanto al rendimiento.
+Al comprobar los resultados de EXPLAIN, en ambas consultas se está realizando un escaneo completo de la tabla pago, lo cual quiere decir que no se está aprovechando ningún índice para optimizar la búsqueda.
 
-```
+Creo que la diferencia más importante está en cómo se filtran las filas. En la primera consulta, todas las filas de la tabla se filtran para seleccionar solo aquellas donde el año de la fecha de pago sea 2008. Sin embargo, en la segunda consulta, se aplica un filtro sobre un rango de fechas específico dentro del año 2008, así que considero que esta, al ser más concreta, podría ser más eficiente en cuanto al rendimiento.
+
+
   >[Lectura recomendada sobre la función YEAR y el uso de índices](https://www.mysqltutorial.org/mysql-date-functions/mysql-year-function/)
 
 - Optimiza la siguiente consulta creando índices cuando sea necesario. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.
