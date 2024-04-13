@@ -74,17 +74,17 @@ SHOW INDEX FROM producto;
 
 - Suponga que estamos trabajando con la base de datos jardineria y queremos saber optimizar las siguientes consultas. ¿Cuál de las dos sería más eficiente?. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.
 
-  ```sql
+```sql
   SELECT AVG(total)
   FROM pago
   WHERE YEAR(fecha_pago) = 2008;
 
-  +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
 | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
 +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
 |  1 | SIMPLE      | pago  | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   26 |   100.00 | Using where |
 +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
-  ```
+```
 
   ```sql
   SELECT AVG(total)
