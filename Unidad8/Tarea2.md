@@ -3,7 +3,7 @@
 
 ## Base de Datos Jardineria
 
-<img src="https://github.com/jpexposito/docencia/raw/master/Primero/BAE/UNIDAD-8/tareas/tarea2/img/er.png">
+<img src="https://github.com/jpexposito/docencia/raw/master/Primero/BAE/UNIDAD-8/tareas/tarea2/img/er.png" height="350px">
 
 1. Función calcular_precio_total_pedido
 - Parámetros de entrada: codigo_pedido (INT)
