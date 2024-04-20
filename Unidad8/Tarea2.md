@@ -61,7 +61,6 @@ END //
 DELIMITER ;
 
 ```
-select calcular_suma_pedidos_cliente(3);
 ```sql
 select calcular_suma_pedidos_cliente(3);
 +----------------------------------+
