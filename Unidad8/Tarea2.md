@@ -103,8 +103,6 @@ select calcular_suma_pagos_cliente(3);
 +--------------------------------+
 |                       25039900 |
 +--------------------------------+
-```sql
-select calcular_suma_pagos_cliente(3);
 ```
 4. Procedimiento calcular_pagos_pendientes
 
