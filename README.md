@@ -76,6 +76,8 @@ BEGIN
           
 ```
 ```SQL
+CALL aumentar_salario(5);
+
 SELECT * FROM empleados;
 +----+--------+---------+
 | id | nombre | salario |
@@ -94,7 +96,7 @@ SELECT * FROM empleados;
 DROP PROCEDURE IF EXISTS salario_anual;
 
   DELIMITER //
-  CREATE PROCEDURE salario_anual(IN id_empleado INT)
+  CREATE PROCEDURE salario_anual(IN meses INT)
   BEGIN
       DECLARE done INT DEFAULT FALSE;
       DECLARE emp_id INT;
@@ -109,7 +111,7 @@ DROP PROCEDURE IF EXISTS salario_anual;
           IF done THEN
               LEAVE read_loop;
           END IF;
-          SELECT id, nombre, salario * 12 as salario_anual from empleados WHERE id = id_empleado;
+          SELECT id, nombre, salario * meses as salario_anual from empleados WHERE id = id_empleado;
       END LOOP;
       CLOSE cur;
   END //
@@ -139,7 +141,7 @@ DROP PROCEDURE IF EXISTS rango_salario;
       DECLARE emp_id INT;
       DECLARE emp_nombre VARCHAR(100);
       DECLARE emp_salario DECIMAL(10, 2);
-      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados;
+      DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados WHERE salario BETWEEN min_limit AND max_limit;
       DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
       OPEN cur;
@@ -148,7 +150,7 @@ DROP PROCEDURE IF EXISTS rango_salario;
           IF done THEN
               LEAVE read_loop;
           END IF;
-          SELECT id, nombre, salario from empleados WHERE salario BETWEEN min_limit AND max_limit;
+          SELECT id, nombre, salario from empleados;
       END LOOP;
       CLOSE cur;
   END //
