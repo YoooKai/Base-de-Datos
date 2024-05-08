@@ -50,7 +50,7 @@ INSERT INTO empleados (nombre, salario) VALUES
 
 ```sql
 DELIMETER //
-CREATE PROCEDURE aumentar_5 ()
+CREATE PROCEDURE aumentar_salario (IN porcentaje DECIMAL (5,2))
 BEGIN
     DECLARE done INT DEFAULT FALSE;
     DECLARE emp_id INT;
@@ -62,10 +62,13 @@ BEGIN
     OPEN cur;
     read_loop: LOOP
         FETCH cur1 INTO emp_id, emp_nombre, emp_salario;
-          IF done THEN
+        IF done THEN
               LEAVE read_loop;
-          END IF;
-          UPDATE empleados SET salario = salario * (1 + 0.05 / 100) where salario > 3200;
+        END IF;
+          IF emp_salario >= 3200 THEN
+            UPDATE empleados SET salario = salario * (1 + porcentaje / 100) where id = emp_id;
+        END IF;
+
         END LOOP
         CLOSE cur
     END //
