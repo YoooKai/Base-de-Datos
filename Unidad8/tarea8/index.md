@@ -21,7 +21,7 @@ Create table alumnos(
     nombre VARCHAR(30),
     apellido1 VARCHAR(30),
     apellido2 VARCHAR(30),
-    nota decimal(2,2)
+    nota decimal(10,2)
 )
 ```
 
@@ -87,13 +87,13 @@ BEGIN
     DECLARE random_nombre VARCHAR(30);
     DECLARE random_apellido1 VARCHAR(30);
     DECLARE random_apellido2 VARCHAR(30);
-    DECLARE random_nota DECIMAL(2,2);
+    DECLARE random_nota DECIMAL(10,2);
 
     WHILE counter < iterations DO
         SET random_nombre = CONCAT('Nombre', counter);
         SET random_apellido1 = CONCAT('Apellido1', counter);
         SET random_apellido2 = CONCAT('Apellido2', counter);
-        SET random_nota = ROUND((RAND() * (10 - 3) + 3), 2);
+        SET random_nota = ROUND(RAND() * (10 - 3) + 3);
         
         INSERT INTO alumnos (nombre, apellido1, apellido2, nota) 
         VALUES (random_nombre, random_apellido1, random_apellido2, random_nota);
@@ -105,6 +105,7 @@ END //
 DELIMITER ;
 
 
+call insertar_alumnos_10(10);
 ```
 
 - Crea un procedimiento que permita realizar la inserción de un número de alumnos, con una nota mímina y máxima. Estos valores pueden oscilar entre -10, y 12.
@@ -112,14 +113,14 @@ DELIMITER ;
 ````sql
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS insertar_alumnos_10;
-CREATE PROCEDURE insertar_alumnos_10(IN iterations INT)
+DROP PROCEDURE IF EXISTS insertar_alumnos_12;
+CREATE PROCEDURE insertar_alumnos_12(IN iterations INT)
 BEGIN
     DECLARE counter INT DEFAULT 0;
     DECLARE random_nombre VARCHAR(30);
     DECLARE random_apellido1 VARCHAR(30);
     DECLARE random_apellido2 VARCHAR(30);
-    DECLARE random_nota DECIMAL(2,2);
+    DECLARE random_nota DECIMAL(10,2);
 
     WHILE counter < iterations DO
         SET random_nombre = CONCAT('Nombre', counter);
