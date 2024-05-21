@@ -1,3 +1,5 @@
+```sql
+
 -- Creación de la base de datos y la tabla
 CREATE DATABASE test;
 USE test;
@@ -145,3 +147,6 @@ mysql> select * from alumnos;
 | 7907 | Nombre0 | Apellido10 | Apellido20 |  0.0 |
 +------+---------+------------+------------+------+
 20 rows in set (0,00 sec)
+
+
+```
