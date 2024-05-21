@@ -84,16 +84,18 @@ DROP PROCEDURE IF EXISTS insertar_alumnos_10;
 CREATE PROCEDURE insertar_alumnos_10(IN iterations INT)
 BEGIN
     DECLARE counter INT DEFAULT 0;
+    DECLARE random_id INT;
     DECLARE random_nombre VARCHAR(30);
     DECLARE random_apellido1 VARCHAR(30);
     DECLARE random_apellido2 VARCHAR(30);
     DECLARE random_nota DECIMAL(10,2);
 
     WHILE counter < iterations DO
+        SET random_id = FLOOR(RAND() * 10000) + counter;
         SET random_nombre = CONCAT('Nombre', counter);
         SET random_apellido1 = CONCAT('Apellido1', counter);
         SET random_apellido2 = CONCAT('Apellido2', counter);
-        SET random_nota = ROUND(RAND() * (10 - 3) + 3);
+        SET random_nota = (ROUND(RAND() * (10 - 3) + 3), 2);
         
         INSERT INTO alumnos (nombre, apellido1, apellido2, nota) 
         VALUES (random_nombre, random_apellido1, random_apellido2, random_nota);
@@ -123,6 +125,7 @@ BEGIN
     DECLARE random_nota DECIMAL(10,2);
 
     WHILE counter < iterations DO
+        SET random_id = FLOOR(RAND() * 10000) + counter;
         SET random_nombre = CONCAT('Nombre', counter);
         SET random_apellido1 = CONCAT('Apellido1', counter);
         SET random_apellido2 = CONCAT('Apellido2', counter);
