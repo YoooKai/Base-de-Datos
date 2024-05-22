@@ -172,3 +172,90 @@ mysql> select * from alumnos;
 +----+--------+-----------+-----------+----------------------+
 10 rows in set (0.01 sec)
 ```
+
+
+
+
+
+--BASE DE DATOS ANTERIOR
+DROP TABLE IF EXISTS alumnos;
+CREATE TABLE alumnos(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nombre VARCHAR(30),
+apellido1 VARCHAR(30),
+apellido2 VARCHAR(30),
+email VARCHAR(100)
+);
+
+mysql> select * from alumnos;
++----+--------+------------+------------+----------------------+
+| id | nombre | apellido1  | apellido2  | email                |
++----+--------+------------+------------+----------------------+
+|  1 | Kai    | González   | Martín     | kgonmar@465cbcf5.com |
+|  2 | Jose   | Martín     | Rodríguez  | jmarrod@465e86f6.com |
+|  3 | Kai    | Gómez      | Fernández  | kgomfer@4660532c.com |
+|  4 | César  | Sánchez    | Martín     | csanmar@4661046c.com |
+|  5 | Marina | Rodríguez  | Gómez      | mrodgom@466196cc.com |
+|  6 | Jesús  | Martínez   | Martín     | jmarmar@4662290f.com |
+|  7 | Lili   | García     | Gómez      | lgargom@4662b2f8.com |
+|  8 | Jesús  | López      | Pérez      | jlopper@46633c0c.com |
+|  9 | Lili   | Rodríguez  | Sánchez    | lrodsan@4663c645.com |
+| 10 | Jesús  | Rodríguez  | Martín     | jrodmar@46645ecb.com |
++----+--------+------------+------------+----------------------+
+10 rows in set (0,00 sec)
+
+
+--NUEVA TABLA LOG_CAMBIOS_EMAIL
+DROP TABLE IF EXISTS log_cambios_email;
+CREATE TABLE log_cambios_email(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_alumno INT REFERENCES alumnos(id),
+    fecha_hora DATETIME,
+    old_email VARCHAR(100),
+    new_email VARCHAR(100)
+);
+
+
+-- TRIGGER
+DROP TRIGGER IF EXISTS trigger_guardar_email_after_update;
+DELIMITER //
+
+CREATE TRIGGER trigger_guardar_email_after_update
+AFTER UPDATE ON alumnos
+FOR EACH ROW
+BEGIN
+    IF NEW.email <> OLD.email THEN
+        INSERT INTO log_cambios_email(id_alumno, fecha_hora, old_email, new_email) 
+        VALUES (OLD.id, NOW(), OLD.email, NEW.email);
+    END IF;
+END;
+//
+
+DELIMITER ;
+
+
+
+--TABLA ALUMNOS ELIMINADOS
+DROP TABLE IF EXISTS log_cambios_email;
+CREATE TABLE log_cambios_email(
+    id PRIMARY KEY AUTO_INCREMENT,
+    id_alumno INT REFERENCES alumnos(id),
+    fecha_hora DATETIME,
+    nombre VARCHAR(30),
+    apellido1 VARCHAR(30),
+    apellido2 VARCHAR(30),
+    email VARCHAR(100)
+);
+
+--TRIGGER 
+DROP TRIGGER IF EXISTS trigger_guardar_alumnos_eliminados;
+DELIMITER //
+CREATE TRIGGER trigger_guardar_alumnos_eliminados
+AFTER DELETE ON alumnos;
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_cambios_email(id_alumno, fecha_hora, nombre, apellido1, apellido2, email) 
+    VALUES(OLD.id_alumno, NOW(), OLD.nombre, OLD.apellido1, OLD.apellido2, OLD.email);
+END;//
+DELIMITER ;
+
