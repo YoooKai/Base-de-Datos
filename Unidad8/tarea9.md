@@ -1,5 +1,4 @@
-
-    # Trabajo con la BBDD Alumnos
+# Trabajo con la BBDD Alumnos
     
     Crea una base de datos llamada test que contenga una tabla llamada alumnos con las siguientes columnas:
     
