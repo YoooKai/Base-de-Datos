@@ -175,32 +175,3 @@ mysql> select * from alumnos;
 
 
 
-
-
---BASE DE DATOS ANTERIOR
-DROP TABLE IF EXISTS alumnos;
-CREATE TABLE alumnos(
-id INT PRIMARY KEY AUTO_INCREMENT,
-nombre VARCHAR(30),
-apellido1 VARCHAR(30),
-apellido2 VARCHAR(30),
-email VARCHAR(100)
-);
-
-mysql> select * from alumnos;
-+----+--------+------------+------------+----------------------+
-| id | nombre | apellido1  | apellido2  | email                |
-+----+--------+------------+------------+----------------------+
-|  1 | Kai    | González   | Martín     | kgonmar@465cbcf5.com |
-|  2 | Jose   | Martín     | Rodríguez  | jmarrod@465e86f6.com |
-|  3 | Kai    | Gómez      | Fernández  | kgomfer@4660532c.com |
-|  4 | César  | Sánchez    | Martín     | csanmar@4661046c.com |
-|  5 | Marina | Rodríguez  | Gómez      | mrodgom@466196cc.com |
-|  6 | Jesús  | Martínez   | Martín     | jmarmar@4662290f.com |
-|  7 | Lili   | García     | Gómez      | lgargom@4662b2f8.com |
-|  8 | Jesús  | López      | Pérez      | jlopper@46633c0c.com |
-|  9 | Lili   | Rodríguez  | Sánchez    | lrodsan@4663c645.com |
-| 10 | Jesús  | Rodríguez  | Martín     | jrodmar@46645ecb.com |
-+----+--------+------------+------------+----------------------+
-10 rows in set (0,00 sec)
-
