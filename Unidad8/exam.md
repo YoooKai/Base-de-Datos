@@ -235,7 +235,7 @@ BEGIN
 END//
 DELIMITER ;
 
-
+--0 representa False, no puede donar
 mysql> SELECT posible_donador(5, '2024-06-04');
 +----------------------------------+
 | posible_donador(5, '2024-06-04') |
@@ -244,8 +244,14 @@ mysql> SELECT posible_donador(5, '2024-06-04');
 +----------------------------------+
 1 row in set (0.35 sec)
 
-
---no está funcionando
+--1 representa True, que puede donar
+mysql> select posible_donador(6, '2024-12-24');
++----------------------------------+
+| posible_donador(6, '2024-12-24') |
++----------------------------------+
+|                                1 |
++----------------------------------+
+1 row in set (1.81 sec)
 ```
 
 2. Crea una función llamada `maximo_donador` que determine qué persona es la que más donaciones ha realizado.
@@ -335,47 +341,53 @@ mysql> select * from total_donaciones;
 2. Crea un trigger que elimine todos los registros en la tabla `persona` cuando se elimine un registro de la tabla `total_donaciones`.
 
 ```sql
-DROP TRIGGER IF EXISTS total_donaciones;
+DROP TRIGGER IF EXISTS actualiza_donaciones;
 DELIMITER //
-CREATE trigger actualiza_donaciones
+CREATE TRIGGER actualiza_donaciones
 AFTER DELETE ON total_donaciones
 FOR EACH ROW
 BEGIN
-    DELETE FROM persona where id = old.id_persona;
+    DELETE FROM persona WHERE id = OLD.id_persona;
 END //
 DELIMITER ;
 
 
-delete from total_donaciones where id_persona = 20;
 
-mysql> select * from total_donaciones;
-+------------+----------------+
-| id_persona | cantidad_total |
-+------------+----------------+
-|          1 |              1 |
-|          2 |              1 |
-|          3 |              1 |
-|          4 |              1 |
-|          5 |              1 |
-|          6 |              1 |
-|          7 |              1 |
-|          8 |              1 |
-|          9 |              1 |
-|         10 |              1 |
-|         11 |              1 |
-|         12 |              1 |
-|         13 |              1 |
-|         14 |              1 |
-|         15 |              1 |
-|         16 |              1 |
-|         18 |              1 |
-|         19 |              1 |
-|         24 |              1 |
-|         25 |              1 |
-+------------+----------------+
-20 rows in set (0.00 sec)
+mysql> delete from total_donaciones where id_persona = 8;
+Query OK, 1 row affected (0.01 sec)
 
---no está dfincionando
+mysql> select * from persona;
+--se ha borrado también de la tabla persona los registros con id 8
++----+---------------+------+----------+------+------------+
+| id | identificador | peso | admitido | sexo | fecha      |
++----+---------------+------+----------+------+------------+
+|  1 | 39adc615      |   85 | Si       | H    | 2024-05-29 |
+|  2 | 39b85fdf      |   36 | Si       | M    | 2024-03-17 |
+|  3 | 39b904e9      |   44 | Si       | H    | 2024-05-29 |
+|  4 | 39b97a62      |   51 | No       | H    | 2024-05-29 |
+|  5 | 39b9cc47      |  123 | Si       | H    | 2024-05-29 |
+|  6 | 39bc8c8e      |   95 | Si       | H    | 2024-12-24 |
+|  7 | 39bdc5a6      |   11 | No       | M    | 2024-05-29 |
+|  9 | 39beaa07      |  106 | No       | M    | 2024-05-29 |
+| 10 | 39bef447      |   44 | Si       | M    | 2024-05-29 |
+| 11 | 39c01767      |   97 | Si       | M    | 2024-05-29 |
+| 12 | 39c2e76f      |   49 | Si       | H    | 2024-05-29 |
+| 13 | 39cc6507      |   92 | No       | M    | 2024-05-29 |
+| 14 | 39ccb2e7      |   40 | No       | M    | 2024-05-29 |
+| 15 | 39cd08ae      |   64 | No       | M    | 2024-05-29 |
+| 16 | 39cee628      |   92 | No       | M    | 2024-05-29 |
+| 17 | 39d0dd9d      |    4 | Si       | M    | 2024-05-29 |
+| 18 | 39d13e1a      |   27 | Si       | M    | 2024-05-29 |
+| 19 | 39d18b8e      |   69 | No       | M    | 2024-05-29 |
+| 20 | 39d1eba7      |   74 | Si       | H    | 2024-05-29 |
+| 21 | d1226a90      |   38 | Si       | H    | 2024-05-29 |
+| 22 | d1232201      |  113 | No       | H    | 2024-05-29 |
+| 23 | d1237a4b      |   46 | No       | M    | 2024-05-29 |
+| 24 | 41bc1691      |   95 | No       | H    | 2024-05-29 |
+| 25 | 41becad0      |  107 | Si       | H    | 2024-05-29 |
++----+---------------+------+----------+------+------------+
+24 rows in set (0.00 sec)
+
 ```
 
 ## Consideraciones adicionales
